@@ -1,0 +1,13 @@
+<h2>マイページ編集</h2>
+   <%= form_with model: @user, url: users_infomation_path, method: :patch, local: true do |f| %>
+    <label for = "user_name">名前</label>
+       <%= f.text_field :name, autofocus: true %>
+    <label for = "inputEvent">専門種目</label>
+       <%= f.text_field :event,  id:"user_inputevent" %>
+    <label for = "inputTarget">目標</label>
+       <%= f.text_field :target,  id:"user_inputtarget" %>
+    <label for = "inputTask">今の課題</label>
+       <%= f.text_field :task,  id:"user_inputtask" %>
+
+       <%= f.submit "変更を保存" %>
+   <% end %>

@@ -1,0 +1,8 @@
+<h2>マイページ</h2>
+
+名前 <%= @user.name %>
+専門種目 <%= @user.event %>
+今の目標 <%= @user.target %>
+目標に対しての課題 <%= @user.task %>
+
+<p><%= link_to "編集", edit_users_path(@user.id) %></p>
