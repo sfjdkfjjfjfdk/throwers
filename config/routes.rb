@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+# 投稿
+  resources :posts
+  
 #会員側
 # URL /users/sign_in...
   devise_for :users,skip: [:passwords], controllers: {
@@ -18,7 +21,6 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-#マイページ
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
