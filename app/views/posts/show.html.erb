@@ -5,6 +5,18 @@
    <p>本日の練習で、課題に対してのスキルアップしたこと:<%= @post.skill %></p>
    <p>本日の練習での課題に対して明日の練習で改善、意識すること:<%= @post.improvement %></p>
 
+   <!--いいね-->
+    <% if @post.liked_by?(current_user) %>
+    <%= link_to post_likes_path(@post), method: :delete, class: "favorite_btn" do %>
+     ♥<%= @post.likes.count %> いいね
+    <% end %>
+    <% else %>
+     <%= link_to post_likes_path(@post), method: :post, class: "favorite_btn" do %>
+      ♡<%= @post.likes.count %> いいね
+     <% end %>
+    <% end %>
+
+
   <% if @post.user_id == current_user.id %>
     <%= link_to "編集する", edit_post_path %>
     <%= link_to "削除する", post_path(@post), method: :delete %>

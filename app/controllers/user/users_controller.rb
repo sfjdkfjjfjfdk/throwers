@@ -1,4 +1,5 @@
 class User::UsersController < ApplicationController
+ # before_action :set_user, only: [:likes]
 
  def show
    @user = current_user
@@ -16,6 +17,11 @@ class User::UsersController < ApplicationController
      @user = current_user
      render :edit
    end
+ end
+
+ def likes
+    likes = Like.where(user_id: @user.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
  end
 
  private
