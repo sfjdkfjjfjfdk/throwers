@@ -16,8 +16,27 @@
      <% end %>
     <% end %>
 
+    <!--コメントフォーム-->
+    <%= form_with(model:[@post, @comment], local: true) do |f| %>
+     <%= f.text_area :comment,placeholder: "コメントをここに" %>
+     <%= f.submit "送信する" %>
+    <% end %>
+
+    <!--コメント一覧部分-->
+    <p>コメント件数：<%= @post.comments.count %></p>
+    <% @post.comments.each do |comment| %>
+     <%= comment.user.name %>
+     <%= comment.created_at.strftime('%Y/%m/%d') %>
+     <%= comment.comment %>
+    <% if comment.user == current_user %>
+     <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+    <% else %>
+    <p>コメントはまだありません</p>
+    <% end %>
+   <% end %>
+
 
   <% if @post.user_id == current_user.id %>
-    <%= link_to "編集する", edit_post_path %>
+    <%= link_to "編集する", edit_post_path(@post.id) %>
     <%= link_to "削除する", post_path(@post), method: :delete %>
   <% end %>

@@ -8,7 +8,10 @@ class User < ApplicationRecord
 
   # いいねのアソシエーション
   has_many :likes, dependent: :destroy
+  # コメントのアソシエーション
+  has_many :comments, dependent: :destroy
 
+  # liked_by?メソッドで引数で渡されたユーザidがlikesテーブル内に存在するかを確認
   def liked_by?(post)
     likes.where(post_id: post_id).exists?
   end

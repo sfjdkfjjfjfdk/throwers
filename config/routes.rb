@@ -14,10 +14,13 @@ Rails.application.routes.draw do
 
  # 投稿
   resources :posts do
+     # いいね
+     # URLにIDがいらないため、resourceにしている
      resource :likes, only: [:create, :destroy]
-
+     # コメント
+     resources :comments, only: [:create, :destroy]
   end
-  
+
   # idが必要なため、memberを使用
   resources :users do
      member do
