@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  
+
   def new
      @post = Post.new
+     @posts = current_user
   end
 
   def create
@@ -11,16 +12,17 @@ class PostsController < ApplicationController
       redirect_to posts_path
     # else
 
-
   end
 
   def index
      @posts = Post.all
+     @post = current_user
   end
 
   def show
      @post = Post.find(params[:id])
      @comment = Comment.new
+     @user = @post.user
   end
 
   def edit
@@ -42,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-     params.require(:post).permit(:date, :weather, :time, :practice, :skill, :improvement)
+     params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement)
   end
 
 end

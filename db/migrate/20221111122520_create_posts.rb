@@ -2,6 +2,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
       t.integer :user_id, null: false, default: ""
+      t.string :name, null: false, default: ""
       t.date :date, null: false, default: ""
       t.text :time, null: false, default: ""
       t.text :weather, null: false, default: ""

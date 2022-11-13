@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_11_13_120126) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "name", default: "", null: false
     t.date "date", null: false
     t.text "time", default: "", null: false
     t.text "weather", default: "", null: false

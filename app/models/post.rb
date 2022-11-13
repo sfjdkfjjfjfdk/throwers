@@ -7,8 +7,8 @@ class Post < ApplicationRecord
   # コメントのアソシエーション
   has_many :comments, dependent: :destroy
 
-  def liked_by?(post)
-    likes.where(user_id: user.id).exists?
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
   end
 
 end

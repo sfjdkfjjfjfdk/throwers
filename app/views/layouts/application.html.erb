@@ -17,7 +17,7 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
       <li>
-        <%= link_to "マイページ", users_infomation_path %>
+        <%= link_to "マイページ", show_users_path(current_user) %>
       </li>
       <li>
         <%= link_to "練習メニュー投稿", new_post_path %>

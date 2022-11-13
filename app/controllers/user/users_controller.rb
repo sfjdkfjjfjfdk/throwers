@@ -2,11 +2,13 @@ class User::UsersController < ApplicationController
  # before_action :set_user, only: [:likes]
 
  def show
-   @user = current_user
+   @user = User.find(params[:id])
+   @users = User.all
+   @post = @user.posts
  end
 
  def edit
-   @user = current_user
+   @user = User.find(params[:id])
  end
 
  def update
@@ -14,7 +16,6 @@ class User::UsersController < ApplicationController
    if @user.update(user_params)
      redirect_to  users_infomation_path
    else
-     @user = current_user
      render :edit
    end
  end

@@ -35,3 +35,8 @@
 
   <%= link_to "投稿した練習メニュー一覧", posts_path(@posts) %>
 
+  <h4>ユーザー一覧</h4>
+  <% @users.each do |user| %>
+    <%= link_to user.name,posts_path(@user) %>
+    <%= user.event %>
+  <% end %>
