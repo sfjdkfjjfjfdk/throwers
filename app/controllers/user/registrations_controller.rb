@@ -47,12 +47,12 @@ class User::RegistrationsController < Devise::RegistrationsController
    end
 
    def after_sign_in_path_for(resource)
-     user_path(current_user)
+     show_users_path(resource)
    end
 
 
    def after_sign_out_path_for(resource)
-     _path
+     root_path
    end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

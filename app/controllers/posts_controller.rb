@@ -47,4 +47,5 @@ class PostsController < ApplicationController
      params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement)
   end
 
+
 end

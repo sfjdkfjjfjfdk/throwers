@@ -5,6 +5,8 @@ class User::UsersController < ApplicationController
    @user = User.find(params[:id])
    @users = User.all
    @post = @user.posts
+   # @following_users = @user.following_user
+   # @follower_users = @user.follower_user
  end
 
  def edit
@@ -12,18 +14,24 @@ class User::UsersController < ApplicationController
  end
 
  def update
-   @user = current_user
+   @user = User.find(params[:id])
    if @user.update(user_params)
-     redirect_to  users_infomation_path
+     redirect_to  show_users_path
    else
      render :edit
    end
  end
 
- def likes
-    likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
+ def destroy
+   @user = User.find(params[:id])
+   if @user.destroy
+     flash[:notice] = 'ユーザーを削除しました。'
+     redirect_to :root #削除に成功すればrootページに戻る
+   else
+     render :show
+   end
  end
+
 
  private
 
