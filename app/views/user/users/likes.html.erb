@@ -1,0 +1,10 @@
+いいね一覧
+<% @like_posts.each do |post|%>
+  <p>日付:<%= link_to post.date, post %></p>
+   <p>投稿者:<%= post.user.name %></p>
+   <p>天気:<%= post.weather %></p>
+   <p>練習時間:<%= post.time %></p>
+   <p>練習メニュー:<%= post.practice %></p>
+   <p>本日の練習で、課題に対してのスキルアップしたこと:<%= post.skill %></p>
+   <p>本日の練習での課題に対して明日の練習で改善、意識すること:<%= post.improvement %></p>
+ <% end %>

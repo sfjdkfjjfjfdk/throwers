@@ -4,6 +4,8 @@ class Post < ApplicationRecord
 
   # いいねのアソシエーション
   has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+  
   # コメントのアソシエーション
   has_many :comments, dependent: :destroy
 
