@@ -1,0 +1,12 @@
+<h1>フォロー一覧</h1>
+ <% if @users.exists? %>
+   <% @users.each do |user| %>
+     <%= link_to user_path(user) do %>
+     <%= user.name %>
+     <%= user.event %>
+     <%= "#{user.posts.count} 投稿" %>
+     <% end %>
+    <% end %>
+ <% else %>
+     <p>ユーザーはいません</p>
+  <% end %>

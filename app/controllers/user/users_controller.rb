@@ -1,12 +1,10 @@
 class User::UsersController < ApplicationController
- # before_action :set_user, only: [:likes]
 
  def show
    @user = User.find(params[:id])
    @users = User.all
-   @post = @user.posts
-   # @following_users = @user.following_user
-   # @follower_users = @user.follower_user
+   @following_users = @user.following_user
+   @follower_users = @user.follower_user
  end
 
  def edit
@@ -32,6 +30,16 @@ class User::UsersController < ApplicationController
    end
  end
 
+ # フォロー一覧
+  def follows
+     user = User.find(params[:id])
+     @users = user.following_user
+  end
+  # フォロワー一覧
+  def followers
+     user = User.find(params[:id])
+     @users = user.follower_user
+  end
 
  private
 
