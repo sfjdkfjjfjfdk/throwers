@@ -10,13 +10,16 @@ Rails.application.routes.draw do
   }
 
   # マイページ
-  # resources :users, only: [:show, :edit, :update]
-   get '/users/:id/infomation' => 'user/users#show', as: 'show_users'
-   get '/users/:id/edit/infomation' => 'user/users#edit', as: 'edit_users'
-   patch '/users/:id/infomation' => 'user/users#update'
-   get 'users/confirm' => 'user/users#confirm'
-   delete 'users/:id/destroy' => 'user/users#destroy', as: 'destroy_users'
+  scope module: 'user' do
+     resources :users, only: [:show, :edit, :update, :destroy] do
+      member do
+       get :follows, :followers
+      end
+      resource :relationships, only: [:create, :destroy]
+     end
+   end
 
+   get 'users/confirm' => 'user/users#confirm'
 
   # 投稿
    resources :posts do
