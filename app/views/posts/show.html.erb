@@ -1,5 +1,5 @@
    <p>日付:<%= @post.date %></p>
-   <p>投稿者:<%= link_to @post.user.name,show_users_path(@user) %></p>
+   <p>投稿者:<%= link_to @post.user.name, user_path(@user) %></p>
    <p>天気:<%= @post.weather %></p>
    <p>練習時間:<%= @post.time %></p>
    <p>練習メニュー:<%= @post.practice %></p>

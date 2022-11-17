@@ -31,10 +31,6 @@ Rails.application.routes.draw do
    end
 
   # フォロー
-   get '/users/user_id/relationship' => 'relationship#create'
-   get '/users/user_id/relationship' => 'relationship#destroy'
-   get '/users/user_id/follows' => 'users#follows', as: 'follows_users'
-   get '/users/user_id/followers' => 'users#followers', as: 'followers_users'
 
   # 管理者側
   # URL /admin/sign_in...
