@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def index
      @posts = Post.all
+     @posts = @posts.where('name, date LIKE ?', "%#{params[:search]}%") if params[:search].present?  #検索機能
      @post = current_user
   end
 

@@ -55,9 +55,9 @@
   <%= link_to "投稿した練習メニュー一覧", posts_path(@posts) %>
   <%= link_to "いいねした投稿", likes_user_path(@user) %>
 
-  ユーザー一覧
+  <h2>ユーザー一覧</h2>
    <% @users.each do |user| %>
-    <%= user.name %>
-    <%= user.event %>
+    <%= link_to user.name, user_path(user)  %>
+    <%= user.event %><br>
    <% end %>
 
