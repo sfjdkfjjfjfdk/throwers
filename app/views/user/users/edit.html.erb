@@ -47,6 +47,7 @@
       <div class = "col-4 ml-5 mt-3" >
         <%= f.submit "編集内容を保存", class: "btn btn-success" %>
       </div>
+       <div><%= link_to "退会する",confirm_user_path(@user), class: "btn btn-danger" %></div>
         <!--%= link_to "退会する", customers_confirm_path(@customer), class: "btn btn-danger" %>-->
    </div>
  <% end %>

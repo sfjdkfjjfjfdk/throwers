@@ -1,9 +1,0 @@
-<h2>ユーザー一覧</h2>
-     <% @users.each do |user| %>
-         <%= user.name %>
-         <%= user.event %>
-         <!--フォロー、フォロワー数-->
-         フォロー<%= user.following_user.count %>
-         フォロワー<%= user.follower_user.count %>
-         <%= link_to "ユーザー詳細ページ", user_path(user) %><br>
-     <% end %>
