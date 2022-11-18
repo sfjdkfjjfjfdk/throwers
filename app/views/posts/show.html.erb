@@ -2,9 +2,9 @@
    <%= f.text_field :search %>
    <%= f.submit '検索する', name: nil %>
   <% end %>
-   
+
    <p>日付:<%= @post.date %></p>
-   <p>投稿者:<%= link_to @post.user.name, user_path(@user) %></p>
+   <p>投稿者:<%= @post.user.name %></p>
    <p>天気:<%= @post.weather %></p>
    <p>練習時間:<%= @post.time %></p>
    <p>練習メニュー:<%= @post.practice %></p>
@@ -12,8 +12,8 @@
    <p>本日の練習での課題に対して明日の練習で改善、意識すること:<%= @post.improvement %></p>
 
      <% if @post.user_id == current_user.id %>
-    <%= link_to "編集する", edit_post_path(@post.id) %>
-    <%= link_to "削除する", post_path(@post), method: :delete %>
+    <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %>
+    <%= link_to "削除する", post_path(@post), class: "btn btn-danger" , method: :delete %>
   <% end %>
 
    <!--いいね-->
@@ -39,9 +39,9 @@
      <%= comment.user.name %>
      <%= comment.created_at.strftime('%Y/%m/%d') %>
      <%= comment.comment %>
-     
+
     <% if comment.user == current_user %>
-     <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+     <%= link_to "削除", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %>
     <% else %>
     <!--<p>コメントはまだありません</p>-->
     <% end %>

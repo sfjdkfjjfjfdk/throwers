@@ -6,7 +6,7 @@
 <h2>練習メニュー一覧</h2>
    <% @posts.each do |post| %>
    <p>日付:<%= link_to post.date, post %></p>
-   <p>投稿者:<%= post.user.name %></p>
+   <p>投稿者:<%= link_to post.user.name, post.user %></p>
    <p>天気:<%= post.weather %></p>
    <p>練習時間:<%= post.time %></p>
    <p>練習メニュー:<%= post.practice %></p>

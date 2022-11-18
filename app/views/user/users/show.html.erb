@@ -5,7 +5,7 @@
 　</div>
 
   <div class = "row" >
-     <div class = "col-8 ml-5" >
+     <div class = "col-7 ml-5" >
          <table class = "table table-borderless">
              <tr>
                  <td>名前</td>
@@ -31,7 +31,7 @@
       <div class = "col-2 ml-5 mt-3">
          <% if user_signed_in? && @user == current_user %>
           <div><%= link_to "編集する", edit_user_path(@user), class: "btn btn-success" %></div>
-          <div><%= link_to "退会する",users_confirm_path(@user), class: "btn btn-danger" %></div>
+          <div><%= link_to "退会する",confirm_user_path(@user), class: "btn btn-danger" %></div>
         <% end %>
       </div>
   </div>
@@ -45,19 +45,21 @@
    <% end %>
  <% end %>
 
-    <%= link_to follows_user_path(@user) do %>
-     <h6>フォロー<%= @following_users.count %></h6>
-    <% end %>
-    <%= link_to followers_user_path(@user) do %>
-     <h6>フォロワー<%= @follower_users.count %></h6>
-    <% end %>
+  <!--フォロー、フォロワー数-->
+  <%= link_to follows_user_path(@user) do %>
+   <h6>フォロー<%= @following_users.count %></h6>
+  <% end %>
+  <%= link_to followers_user_path(@user) do %>
+   <h6>フォロワー<%= @follower_users.count %></h6>
+  <% end %>
 
-  <%= link_to "投稿した練習メニュー一覧", posts_path(@posts) %>
+  <%= link_to "投稿されている練習メニュー一覧", posts_path(@posts) %>
   <%= link_to "いいねした投稿", likes_user_path(@user) %>
 
   <h2>ユーザー一覧</h2>
    <% @users.each do |user| %>
     <%= link_to user.name, user_path(user)  %>
     <%= user.event %><br>
+
    <% end %>
 

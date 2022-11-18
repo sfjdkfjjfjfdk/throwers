@@ -15,12 +15,13 @@ Rails.application.routes.draw do
       member do
        get :follows, :followers
        get :likes
+       get :confirm
       end
       resource :relationships, only: [:create, :destroy]
      end
    end
 
-   get 'users/confirm' => 'user/users#confirm'
+   # get 'users/confirm' => 'user/users#confirm'
 
   # 投稿
    resources :posts do
