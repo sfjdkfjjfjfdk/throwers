@@ -9,20 +9,25 @@ Rails.application.routes.draw do
    sessions: 'user/sessions'
   }
 
-  # マイページ
+  # ユーザー
   scope module: 'user' do
      resources :users, only: [:index, :show, :edit, :update, :destroy] do
       member do
-       get :follows, :followers
-       get :likes
+       # フォロー、フォロワー
+       get :follows, :followers 
+       # いいね
+       get :likes 
+       # 退会確認画面
        get :confirm
       end
+      # idが必要なためrelationshipsをネスト
       resource :relationships, only: [:create, :destroy]
      end
    end
 
-   # get 'users/confirm' => 'user/users#confirm'
-
+    # 検索機能
+    get "search" => "searches#search"
+ 
   # 投稿
    resources :posts do
      # いいね
@@ -31,8 +36,6 @@ Rails.application.routes.draw do
      # コメント
      resources :comments, only: [:create, :destroy]
    end
-
-  # フォロー
 
   # 管理者側
   # URL /admin/sign_in...

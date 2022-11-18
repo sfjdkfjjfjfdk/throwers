@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
   def index
      @posts = Post.all.order("created_at DESC")
-    #  @posts = @posts.where('name, date LIKE ?', "%#{params[:search]}%") if params[:search].present?  #検索機能
      @post = current_user
   end
 

@@ -6,16 +6,16 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  # いいねのアソシエーション
-  has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes, source: :post
+ # いいねのアソシエーション
+ has_many :likes, dependent: :destroy
+ has_many :liked_posts, through: :likes, source: :post
   
-  def liked_by?(post_id)
-    likes.where(post_id: post_id).exists?
-  end
-  
-  # コメントのアソシエーション
-  has_many :comments, dependent: :destroy
+ def liked_by?(post_id)
+     likes.where(post_id: post_id).exists?
+ end
+
+ # コメントのアソシエーション
+ has_many :comments, dependent: :destroy
 
  # フォローをした、されたの関係
  # class_name: "Relationship"でRelationshipテーブルを参照
@@ -30,18 +30,33 @@ class User < ApplicationRecord
  has_many :follower_user, through: :followed, source: :follower
 
  # ユーザーをフォローする
-  def follow(user_id)
+ def follow(user_id)
     follower.create(followed_id: user_id)
-  end
+ end
 
-  # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
-  end
+ # ユーザーのフォローを外す
+ def unfollow(user_id)
+     follower.find_by(followed_id: user_id).destroy
+ end
 
-  # フォローしていればtrueを返す
-  def following?(user)
-    following_user.include?(user)
+ # フォローしていればtrueを返す
+ def following?(user)
+     following_user.include?(user)
+ end
+
+# 検索方法
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
   end
 
 end
