@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # マイページ
   scope module: 'user' do
-     resources :users, only: [:show, :edit, :update, :destroy] do
+     resources :users, only: [:index, :show, :edit, :update, :destroy] do
       member do
        get :follows, :followers
        get :likes
