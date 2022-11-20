@@ -8,10 +8,11 @@ class PostsController < ApplicationController
   def create
      @post = Post.new(post_params)
      @post.user_id = current_user.id
-     @post.save
-      redirect_to posts_path
-    # else
-
+     if @post.save
+       redirect_to posts_path
+     else
+       render :new
+     end
   end
 
   def index
@@ -31,8 +32,11 @@ class PostsController < ApplicationController
 
   def update
      @post = Post.find(params[:id])
-     @post.update(post_params)
-     redirect_to post_path
+     if @post.update(post_params)
+       redirect_to post_path
+     else
+       render :edit
+     end
   end
 
   def destroy

@@ -1,8 +1,5 @@
 class User::UsersController < ApplicationController
-
- def index
-   @users = User.all
- end
+ before_action :authenticate_user!,except: [:top]
 
  def show
    @user = User.find(params[:id])

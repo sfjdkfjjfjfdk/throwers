@@ -1,6 +1,12 @@
 class Post < ApplicationRecord
   
-  
+  validates :name, presence: true
+  validates :date, presence: true
+  validates :weather, presence: true
+  validates :time, presence: true
+  validates :practice, presence: true
+  validates :skill, presence: true
+  validates :improvement, presence: true
 
   belongs_to :user
 

@@ -1,0 +1,23 @@
+<% if users.exists? %>
+ <% users.each do |user| %>
+    <thead>
+        <tr>
+            <th>ユーザー名</th>
+            <th>専門種目</th>
+            <th>投稿数</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.event %></td>
+            <td><%= "#{user.posts.count} 投稿" %></td>
+            <td><%= link_to "ユーザー詳細ページ", user_path(user) %></td>
+        </tr>
+    </tbody>
+  </table>
+  <% end %>
+  <% else %>
+     <p>ユーザーはいません</p>
+  <% end %>

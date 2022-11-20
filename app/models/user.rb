@@ -4,6 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+ validates :name, presence: true
+ validates :event, presence: true
+ validates :target, presence: true
+ validates :task, presence: true
+
+
+
+ 
   has_many :posts, dependent: :destroy
 
  # いいねのアソシエーション
