@@ -4,7 +4,6 @@ class SearchesController < ApplicationController
   def search
     # 検索モデル
     @range = params[:range]
-
     if @range == "User"
       # 検索方法はparams[:search]、検索ワードはparams[:word]
       @users = User.looks(params[:search], params[:word])
