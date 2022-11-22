@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     create_table :posts do |t|
       t.bigint :user_id, null: false
       t.string :name, null: false, default: ""
-      t.date :date, null: false, default: ""
+      t.date :date, null: false
       t.text :time, null: false, default: ""
       t.text :weather, null: false, default: ""
       t.text :practice, null: false, default: ""
