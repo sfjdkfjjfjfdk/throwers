@@ -5,7 +5,7 @@
          <table class = "table table-borderless">
            <tr>
              <td>名前</td>
-               <td><%= @user.name %></td>
+             <td><%= @user.name %></td>
              </tr>
            <tr>
              <td>専門種目</td>
@@ -13,7 +13,8 @@
            </tr>
          </table>
          <% if user_signed_in? && @user == current_user %>
-         <div><%= link_to "編集する", edit_user_path(@user), class: "btn btn-success" %></div>
+         　<%= link_to "編集する", edit_user_path(@user), class: "btn btn-success" %>
+         　<%= link_to "退会する",confirm_user_path(@user), class: "btn btn-danger" %>
         <% end %>
         <!--ログインユーザーでない場合にフォローボタン表示-->
         <% if current_user != @user %>
@@ -33,7 +34,7 @@
         <%= link_to "投稿されている練習メニュー一覧", posts_path(@posts) %><br>
         <%= link_to "いいねした投稿", likes_user_path(@user) %><br>
      </div>
-     
+
      <div class = "col-9">
       <h3>ユーザー一覧</h3>
        <table class = "table table-border">

@@ -1,53 +1,34 @@
-  <div class = "row ml-5 mt-3 mb-3" >
-    <h2>マイページ編集</h2>
+ <div class="row justify-content-around mb-3">
+   <div class = "col-7">
+     <h4>マイページ編集</h4>
   </div>
+ </div>
+
 
  <%= render 'layouts/errors', obj: @user %>
    <%= form_with model: @user, url: user_path, method: :patch, local: true do |f| %>
-    <div class = "row" >
-      <div class = "col-6 ml-5" >
+    <div class = "row justify-content-around" >
+      <div class = "col-6 mr-5" >
         <table class = "table table-borderless" >
           <tr>
-            <td>
-              <label for = "user_name">名前</label>
-            </td>
-            <td>
-              <%= f.text_field :name, autofocus: true %>
-            </td>
+            <td>名前</td>
+            <td><%= f.text_field :name, autofocus: true %></td>
           </tr>
           <tr>
-            <td>
-             <label for = "inputEvent">専門種目</label>
-            </td>
-            <td>
-               <%= f.text_field :event,  id:"user_inputevent" %>
-            </td>
+            <td>専門種目</td>
+            <td><%= f.text_field :event,  id:"user_inputevent" %></td>
           </tr>
           <tr>
-            <td>
-             <label for = "inputTarget">目標</label>
-            </td>
-            <td>
-               <%= f.text_field :target,  id:"user_inputtarget" %>
-            </td>
+            <td>目標</td>
+            <td><%= f.text_field :target,  id:"user_inputtarget" %></td>
           </tr>
           <tr>
-            <td>
-             <label for = "inputTask">目標を達成するための現状の課題</label>
-            </td>
-            <td>
-               <%= f.text_field :task,  id:"user_inputtask" %>
-            </td>
+            <td>目標を達成するための今の課題</td>
+            <td><%= f.text_field :task,  id:"user_inputtask" %></td>
+            <td> <%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
           </tr>
         </table>
       </div>
     </div>
 
-    <div class = "row" >
-      <div class = "col-4 ml-5 mt-3" >
-        <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-      </div>
-       <div><%= link_to "退会する",confirm_user_path(@user), class: "btn btn-danger" %></div>
-        <!--%= link_to "退会する", customers_confirm_path(@customer), class: "btn btn-danger" %>-->
-   </div>
  <% end %>

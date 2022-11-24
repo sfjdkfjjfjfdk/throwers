@@ -38,6 +38,8 @@
     <% if comment.user == current_user %>
      <%= link_to "削除", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %>
     <% else %>
-    <!--<p>コメントはまだありません</p>-->
+     <p>コメントはまだありません</p>
     <% end %>
    <% end %>
+
+   <%= link_to "投稿一覧ページに戻る", posts_path(@posts) %>
