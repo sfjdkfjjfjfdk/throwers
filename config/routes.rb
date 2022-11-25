@@ -14,22 +14,25 @@ Rails.application.routes.draw do
      resources :users, only: [:show, :edit, :update, :destroy] do
       member do
        # フォロー、フォロワー
-       get :follows, :followers 
+       get :follows, :followers
        # いいね
-       get :likes 
+       get :likes
        # 退会確認画面
        get :confirm
+       # ユーザー検索
+       get :search
       end
-      # idが必要なためrelationshipsをネスト
+      # relationshipsをネスト
       resource :relationships, only: [:create, :destroy]
      end
-   end
+    end
 
-    # 検索機能
-    get "search" => "searches#search"
- 
   # 投稿
    resources :posts do
+    collection do
+     # 投稿検索
+     get :search
+    end
      # いいね
      # URLにIDがいらないため、resourceにしている
      resource :likes, only: [:create, :destroy]
@@ -43,6 +46,6 @@ Rails.application.routes.draw do
    sessions: "admin/sessions"
   }
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

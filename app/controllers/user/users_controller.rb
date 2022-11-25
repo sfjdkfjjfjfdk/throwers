@@ -49,6 +49,11 @@ class User::UsersController < ApplicationController
    @users = user.follower_user
  end
 
+ # 検索機能
+ def search
+   @users = User.search(params[:search])
+ end
+
  private
 
  def user_params

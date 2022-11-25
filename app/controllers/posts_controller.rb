@@ -45,6 +45,11 @@ class PostsController < ApplicationController
      redirect_to posts_path
   end
 
+  # 検索機能
+  def search
+    @posts = Post.search(params[:search])
+  end
+
   private
 
   def post_params

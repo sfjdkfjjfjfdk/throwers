@@ -1,3 +1,9 @@
+<%= form_tag(search_user_path,:method => 'get') do %>
+  <%= label_tag '名前で検索' %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :address => nil %>
+<% end %>
+
 <div class= "container" >
 　<div class = "row">
      <div class = "col-3 mb-2">
@@ -59,6 +65,6 @@
         </tbody>
         <% end %>
        </tbody>
-   </div>
+   　 </div>
   </div>
 </div>
