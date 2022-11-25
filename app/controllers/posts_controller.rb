@@ -48,12 +48,13 @@ class PostsController < ApplicationController
   # 検索機能
   def search
     @posts = Post.search(params[:search])
+    @post = Post.page(params[:page]).order("created_at DESC")
   end
 
   private
 
   def post_params
-     params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement)
+     params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement, :profile_image)
   end
 
 

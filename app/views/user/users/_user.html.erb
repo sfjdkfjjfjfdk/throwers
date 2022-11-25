@@ -1,0 +1,31 @@
+      <table class = "table table-border">
+        <thead>
+          <tr>
+           <th></th>
+           <th>名前</th>
+           <th>専門種目</th>
+           <th></th>
+           <th></th>
+           <th></th>
+          </tr>
+        </thead>
+        <% users.each do |user| %>
+        <tbody>
+         <tr>
+          <td>
+           <% if user.profile_image.attached? %>
+            <%= image_tag user.get_profile_image(50, 50) %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+           <% end %>
+          </td>
+          <td><%= user.name %></td>
+          <td><%= user.event %></td>
+          <td>フォロー<%= user.following_user.count %></td>
+          <td>フォロワー<%= user.follower_user.count %></td>
+          <td><%= link_to "ユーザー詳細ページ", user_path(user) %></td>
+         </tr>
+        </tbody>
+        <% end %>
+       </tbody>
+      </table>

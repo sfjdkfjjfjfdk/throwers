@@ -17,7 +17,6 @@
        <tr class="field">
          <td><%= f.label :パスワード %></td>
          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-         <td><%= f.submit "ログイン" %></td>
        </tr>
 
        <% if devise_mapping.rememberable? %>
@@ -26,13 +25,16 @@
            <%= f.check_box :remember_me %>
            <%= f.label :remember_me %>
          </td>
+        </tr>
        <% end %>
 
+       <%= f.submit "ログイン" %>
        <% end %>
      </table>
+
     </div>
   </div>
-  
+
   <div class = "row justify-content-around mt-4">
        <div class = "col-7">
          <h4>会員登録がお済みでない方</h4>
