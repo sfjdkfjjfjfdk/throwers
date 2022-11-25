@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   # URL /users/sign_in...
    devise_for :users,skip: [:passwords], controllers: {
    registrations: "user/registrations",
-   sessions: 'user/sessions'
+   sessions: "user/sessions"
   }
 
   # ユーザー
-  scope module: 'user' do
+  scope module: "user" do
      resources :users, only: [:show, :edit, :update, :destroy] do
       member do
        # フォロー、フォロワー
