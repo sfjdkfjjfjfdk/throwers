@@ -1,10 +1,5 @@
  <% posts.each do |post| %>
    <p>
-     <% if post.user.profile_image.attached? %>
-      <%= image_tag post.user.get_profile_image(50, 50) %>
-     <% else %>
-      <%= image_tag 'no_image', size: "50x50" %>
-     <% end %>
    </p>
    <p>日付:<%= link_to post.date , post %></p>
    <p>投稿者:<%= link_to post.user.name, post.user %></p>
