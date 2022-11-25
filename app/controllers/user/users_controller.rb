@@ -57,7 +57,7 @@ class User::UsersController < ApplicationController
  private
 
  def user_params
-   params.require(:user).permit(:name, :event, :target, :task)
+   params.require(:user).permit(:name, :event, :target, :task, :profile_image)
  end
 
 end

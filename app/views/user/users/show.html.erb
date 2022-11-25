@@ -6,8 +6,13 @@
 
 <div class= "container" >
 　<div class = "row">
-     <div class = "col-3 mb-2">
+     <div class = "col-4 mb-2">
        <h3>ユーザページ</h3>
+         <% if @user.profile_image.attached? %>
+          <%= image_tag @user.get_profile_image(100, 100) %>
+         <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
          <table class = "table table-borderless">
            <tr>
              <td>名前</td>
@@ -41,11 +46,12 @@
         <%= link_to "いいねした投稿", likes_user_path(@user) %><br>
      </div>
 
-     <div class = "col-9">
+     <div class = "col-8">
       <h3>ユーザー一覧</h3>
        <table class = "table table-border">
         <thead>
           <tr>
+           <th></th>
            <th>名前</th>
            <th>専門種目</th>
            <th></th>
@@ -56,6 +62,13 @@
         <% @users.each do |user| %>
         <tbody>
          <tr>
+          <td>
+           <% if user.profile_image.attached? %>
+            <%= image_tag user.get_profile_image(50, 50) %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+           <% end %>
+          </td>
           <td><%= user.name %></td>
           <td><%= user.event %></td>
           <td>フォロー<%= user.following_user.count %></td>
