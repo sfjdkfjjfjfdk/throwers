@@ -8,6 +8,11 @@
 　<div class = "row">
      <div class = "col-4 mb-2">
        <h3>ユーザページ</h3>
+         <% if @user.profile_image.attached? %>
+          <%= image_tag @user.get_profile_image(100, 100) %>
+         <% else %>
+          <%= image_tag '/images/no_image', size: "100x100" %>
+        <% end %>
          <table class = "table table-borderless">
            <tr>
              <td>名前</td>
