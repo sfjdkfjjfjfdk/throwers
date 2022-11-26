@@ -1,12 +1,6 @@
-  <div class="row justify-content-around mb-3">
-   <div class = "col-8" >
-    <h4>いいね一覧</h4>
-   </div>
-  </div>
-
-　<div class="row justify-content-around">
-   <div class = "col-10">
-  　　　<table class = "table table-border">
+<div class="row justify-content-around">
+     <div class = "col-10">
+      <table class = "table table-border">
         <thead>
           <tr>
            <th></th>
@@ -15,9 +9,10 @@
            <th></th>
            <th></th>
            <th></th>
+           <th></th>
           </tr>
         </thead>
-        <% @like_posts.each do |post|%>
+        <% posts.each do |post| %>
         <tbody>
          <tr>
           <td>
@@ -25,14 +20,16 @@
             <%= image_tag post.user.get_profile_image(50, 50) %>
            <% end %>
           </td>
-          <td><%= link_to post.user.name, post.user %></td>
-          <td><%= link_to post.date , post %></td>
+          <td><%= post.user.name %></td>
+          <td><%= post.date %></td>
           <td><%= post.likes.count %> いいね</td>
           <td>コメント件数：<%= post.comments.count %></td>
-          <td><%= link_to "練習メニュー詳細", post_path(post.id) %></td>
+          <td><%= link_to "ユーザー詳細ページ", user_path(post.user) %></td>
+          <td><%= link_to "練習メニュー詳細ページ", post_path(post) %></td>
          </tr>
         </tbody>
         <% end %>
- 　　　 </table>
- 　 </div>
-  </div>
+       </tbody>
+      </table>
+    </div>
+   </div>

@@ -1,4 +1,9 @@
-<h4>練習メニュー一覧</h4>
-   <%= render 'post', posts: @my_posts %>
+   <div class="row justify-content-around mb-3">
+    <div class = "col-8" >
+       <h4>練習メニュー一覧</h4>
+    </div>
+   </div>
 
- <%= paginate (@my_post) %>
+   <%= render 'posts', posts: @my_posts %>
+
+  v<%= paginate (@my_post) %>

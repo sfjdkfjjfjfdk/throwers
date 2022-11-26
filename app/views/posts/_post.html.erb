@@ -1,31 +1,41 @@
-      <table class = "table table-border">
-        <thead>
-          <tr>
-           <th></th>
-           <th>投稿者</th>
-           <th>日付</th>
-           <th></th>
-           <th></th>
-           <th></th>
-           <th></th>
-          </tr>
-        </thead>
-        <% posts.each do |post| %>
-        <tbody>
-         <tr>
-          <td>
-           <% if post.user.profile_image.attached? %>
-            <%= image_tag post.user.get_profile_image(50, 50) %>
-           <% end %>
-          </td>
-          <td><%= post.user.name %></td>
-          <td><%= post.date %></td>
-          <td><%= post.likes.count %> いいね</td>
-          <td>コメント件数：<%= post.comments.count %></td>
-          <td><%= link_to "ユーザー詳細ページ", user_path(post.user) %></td>
-          <td><%= link_to "練習メニュー詳細ページ", post_path(post) %></td>
-         </tr>
-        </tbody>
-        <% end %>
-       </tbody>
-      </table>
+ <div class="row justify-content-around">
+   <div class = "col-7">
+     <table class = "table table-borderless">
+      <%= form_with model: post do |f| %>
+       <tr>
+        <td>投稿者名</td>
+        <td><%= f.text_field :name %></td>
+       </tr>
+       <tr>
+        <td>日付</td>
+        <td><%= f.text_field :date %></td>
+       </tr>
+       <tr>
+        <td>天気</td>
+        <td><%= f.text_field :weather %></td>
+       </tr>
+       <tr>
+        <td>練習時間</td>
+        <td><%= f.text_field :time %></td>
+       </tr>
+       <tr>
+        <td>練習メニュー</td>
+        <td><%= f.text_area :practice, size: "50x15" %></td>
+       </tr>
+       <tr>
+        <td>本日の練習で良かったこと</td>
+        <td><%= f.text_area :skill, size: "50x5" %></td>
+       </tr>
+       <tr>
+        <td>明日の練習で改善、意識すること</td>
+        <td><%= f.text_area :improvement, size: "50x5" %></td>
+       </tr>
+       <tr>
+        <td></td>
+        <td></td>
+        <td><%= f.submit "投稿する" %></td>
+       </tr>
+     </table>
+     <% end %>
+    </div>
+  </div>

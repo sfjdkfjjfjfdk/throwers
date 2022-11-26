@@ -1,10 +1,16 @@
-<%= form_tag(search_posts_path,:method => 'get') do %>
-  <%= label_tag '投稿者名か日付で検索' %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :address => nil %>
-<% end %>
+  <div class="row justify-content-around mb-3">
+   <div class = "col-5 ml-5" >
+     <h4>練習メニュー一覧</h4>
+   </div>
+   <div class = "col-5">
+     <%= form_tag(search_posts_path,:method => 'get') do %>
+       <%= label_tag '投稿者名、日付のどちらかで検索' %>
+       <%= text_field_tag :search %>
+       <%= submit_tag '検索', :address => nil %>
+    <% end %>
+   </div>
+  </div>
 
-<h4>練習メニュー一覧</h4>
-   <%= render 'post', posts: @posts %>
+  <%= render 'posts', posts: @posts %>
 
  <%= paginate (@posts) %>
