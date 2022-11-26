@@ -1,13 +1,15 @@
-<%= form_tag(search_user_path,:method => 'get') do %>
-  <%= label_tag '名前で検索' %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :address => nil %>
-<% end %>
-
-<div class= "container" >
-　<div class = "row">
-     <div class = "col-4 mb-2">
-       <h3>ユーザページ</h3>
+ <div class = "container">
+  <div class = "text-right">
+   <%= form_tag(search_user_path,:method => 'get') do %>
+    <%= label_tag '名前または、専門種目で検索' %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索', :address => nil %>
+   <% end %>
+   </div>
+   
+    <div class = "row">
+     <div class = "col-3">
+       <h4>ユーザページ</h4>
          <% if @user.profile_image.attached? %>
           <%= image_tag @user.get_profile_image(100, 100) %>
         <% end %>
@@ -44,11 +46,9 @@
         <%= link_to "いいねした投稿", likes_user_path(@user) %><br>
         <%= link_to "自分が投稿した練習メニュー一覧", myposts_posts_path(@my_posts) %>
      </div>
-
-   <div class = "col-8">
-      <h4>ユーザー一覧</h4>
-        <%= render 'user', users: @users %>
-    </div>
-
+     <div class = "col-9">
+       <h4>ユーザー一覧</h4>
+       <%= render 'user', users: @users %>
+      </div>
+     </div>
   </div>
-</div>
