@@ -18,6 +18,8 @@ class PostsController < ApplicationController
   def index
      @posts = Post.page(params[:page]).order("created_at DESC")
      @post = current_user
+     @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+
   end
 
   def show
@@ -47,9 +49,15 @@ class PostsController < ApplicationController
 
   # 検索機能
   def search
-    @posts = Post.search(params[:search])
-    @post = Post.page(params[:page]).order("created_at DESC")
+     @posts = Post.search(params[:search])
+     @post = Post.page(params[:page]).order("created_at DESC")
   end
+
+  def myposts
+      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+      @my_post  = Post.page(params[:page]).order("created_at DESC")
+  end
+
 
   private
 

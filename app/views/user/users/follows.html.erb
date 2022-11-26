@@ -1,3 +1,13 @@
-<h2>フォロー一覧</h2>
-   <table class="table table-border">
-     <%= render 'user/relationships/follow', users: @users %>
+  <div class="row justify-content-around mb-3">
+    <div class = "col-10" >
+       <h4>フォロー一覧</h4>
+    </div>
+  </div>
+
+  <div class="row justify-content-around">
+    <div class = "col-10">
+       <table class="table table-border">
+          <%= render 'user/relationships/follow', users: @users %>
+        </table>
+    </div>
+   </div>

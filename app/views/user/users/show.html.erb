@@ -42,12 +42,13 @@
         <% end %>
         <%= link_to "投稿されている練習メニュー一覧", posts_path(@posts) %><br>
         <%= link_to "いいねした投稿", likes_user_path(@user) %><br>
+        <%= link_to "自分が投稿した練習メニュー一覧", myposts_posts_path(@my_posts) %>
      </div>
 
-     <div class = "col-8">
-      <h3>ユーザー一覧</h3>
-       <%= render 'user', users: @users %>
-   　 </div>
+   <div class = "col-8">
+      <h4>ユーザー一覧</h4>
+        <%= render 'user', users: @users %>
+    </div>
 
   </div>
 </div>

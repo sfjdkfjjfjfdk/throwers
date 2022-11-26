@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     collection do
      # 投稿検索
      get :search
+     # 自分の投稿一覧
+     get :myposts
     end
      # いいね
      # URLにIDがいらないため、resourceにしている

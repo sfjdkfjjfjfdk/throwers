@@ -1,8 +1,12 @@
-<h1>練習メニュー投稿</h1>
- <%= render 'layouts/errors', obj: @post %>
+ <div class="row justify-content-around mb-3">
+  <div class = "col-8" >
+    <h4>練習メニュー投稿</h4>
+  </div>
+ </div>
+   <%= render 'layouts/errors', obj: @post %>
 
-   <div class = "row mt-4" >
-    <div class = "col-7" >
+  <div class="row justify-content-around">
+   <div class = "col-7">
      <table class = "table table-borderless">
       <%= form_with model: @post do |f| %>
        <tr>
@@ -23,18 +27,22 @@
        </tr>
        <tr>
         <td>練習メニュー</td>
-        <td><%= f.text_field :practice %></td>
+        <td><%= f.text_area :practice, size: "50x15" %></td>
        </tr>
        <tr>
-        <td>本日の練習で、課題に対してのスキルアップしたこと</td>
-        <td><%= f.text_field :skill %></td>
+        <td>本日の練習で良かったこと</td>
+        <td><%= f.text_area :skill, size: "50x5" %></td>
        </tr>
        <tr>
-        <td>本日の練習での課題に対して明日の練習で改善、意識すること</td>
-        <td><%= f.text_field :improvement %></td>
+        <td>明日の練習で改善、意識すること</td>
+        <td><%= f.text_area :improvement, size: "50x5" %></td>
        </tr>
-       <%= f.submit "投稿する" %>
-       <% end %>
+       <tr>
+        <td></td>
+        <td></td>
+        <td><%= f.submit "投稿する" %></td>
+       </tr>
      </table>
+     <% end %>
     </div>
-   </div>
+  </div>
