@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def myposts
-      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+      @my_posts = Post.where(user_id: current_user.id).page(params[:page]).includes(:user).order("created_at DESC")
       @my_post  = Post.page(params[:page]).order("created_at DESC")
   end
 

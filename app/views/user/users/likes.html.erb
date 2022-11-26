@@ -25,8 +25,8 @@
             <%= image_tag post.user.get_profile_image(50, 50) %>
            <% end %>
           </td>
-          <td><%= link_to post.user.name, post.user %></td>
-          <td><%= link_to post.date , post %></td>
+          <td><%= post.user.name, post.user %></td>
+          <td><%= post.date , post %></td>
           <td><%= post.likes.count %> いいね</td>
           <td>コメント件数：<%= post.comments.count %></td>
           <td><%= link_to "練習メニュー詳細", post_path(post.id) %></td>
