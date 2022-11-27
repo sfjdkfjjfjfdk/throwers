@@ -39,6 +39,11 @@
                 練習メニュー投稿
                 <% end %>
               </li>
+              <li>
+                <%= link_to posts_path(@posts), class: 'nav-link text-light' do %>
+                練習メニュー一覧
+                <% end %>
+              </li>
               <% else %>
               <li>
                 <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>

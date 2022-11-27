@@ -1,7 +1,7 @@
+ <%= form_with model: post do |f| %>
  <div class="row justify-content-around">
    <div class = "col-7">
      <table class = "table table-borderless">
-      <%= form_with model: post do |f| %>
        <tr>
         <td>投稿者名</td>
         <td><%= f.text_field :name %></td>
@@ -29,13 +29,12 @@
        <tr>
         <td>明日の練習で改善、意識すること</td>
         <td><%= f.text_area :improvement, size: "50x5" %></td>
-       </tr>
-       <tr>
         <td></td>
-        <td></td>
-        <td><%= f.submit "投稿する" %></td>
        </tr>
      </table>
+     <div class="text-center">
+      <%= f.submit "投稿する", class:"btn btn-success" %>
+     </div>
      <% end %>
     </div>
   </div>

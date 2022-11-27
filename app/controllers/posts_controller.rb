@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def index
-     @posts = Post.page(params[:page]).order("created_at DESC")
+     @posts = Post.page(params[:page]).per(5).order("created_at DESC")
      @post = current_user
      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
 

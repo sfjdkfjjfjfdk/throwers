@@ -4,10 +4,10 @@
   </div>
 </div>
 
- <div class="row justify-content-around">
-   <div class="col-7 ml-5">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+   <div class="row justify-content-around">
+    <div class="col-7 ml-5">
      <table class = "table table-borderless" >
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "user/shared/error_messages", resource: resource %>
 
      <tr class="field">
@@ -37,13 +37,13 @@
      <tr class="field">
        <td><%= f.label :パスワード %><em>(確認用)</em></td>
        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+       <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
      </tr>
 
      </table>
-     <%= f.submit "新規登録", class:"btn btn-success" %>
-     <% end %>
-  </div>
- </div>
+    </div>
+   </div>
+  <% end %>
 
      <div class = "row justify-content-around mt-4">
        <div class = "col-7">
@@ -56,4 +56,3 @@
           <%= render "user/shared/links" %>
        </div>
      </div>
-
