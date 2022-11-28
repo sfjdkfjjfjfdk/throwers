@@ -31,7 +31,7 @@ class Post < ApplicationRecord
   # 検索
   def self.search(search)
     if search
-      Post.where(['name LIKE(?) OR date LIKE(?)', "%#{search}%","%#{search}%"])
+      Post.where(['date LIKE(?)', "%#{search}%"])
     end
   end
 
