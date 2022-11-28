@@ -47,12 +47,8 @@ class PostsController < ApplicationController
 
   def destroy
      @post = Post.find(params[:id])
-     if @post.user == current_user
-     　 @post.destroy
-       redirect_to posts_path
-     else
-       render :index
-     end
+     @post.destroy
+     redirect_to posts_path
   end
 
   # 検索機能

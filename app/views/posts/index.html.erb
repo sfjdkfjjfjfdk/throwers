@@ -4,7 +4,7 @@
    </div>
    <div class = "col-5">
      <%= form_tag(search_posts_path,:method => 'get') do %>
-       <%= label_tag '投稿者名、日付のどちらかで検索' %>
+       <%= label_tag '日付で検索' %>
        <%= text_field_tag :search %>
        <%= submit_tag '検索', :address => nil %>
     <% end %>

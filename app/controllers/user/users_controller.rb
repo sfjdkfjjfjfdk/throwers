@@ -27,13 +27,9 @@ class User::UsersController < ApplicationController
 
  def destroy
    @user = User.find(params[:id])
-   if @user == current_user
-     @user.destroy
-     flash[:notice] = 'ユーザーを削除しました。'
-     redirect_to :root #削除に成功すればrootページに戻る
-   else
-     render :show
-   end
+   @user.destroy
+   flash[:notice] = 'ユーザーを削除しました。'
+   redirect_to :root #削除に成功すればrootページに戻る
  end
 
  def likes

@@ -52,7 +52,9 @@
         </div>
 
         <%= link_to "いいねした投稿一覧", likes_user_path(@user) %><br>
+       <% if user_signed_in? && @user == current_user %>
         <%= link_to "自分の練習メニュー一覧", myposts_posts_path(@my_posts) %>
+       <% end %>
      </div>
      <div class = "col-9">
        <h4>ユーザー一覧</h4>
