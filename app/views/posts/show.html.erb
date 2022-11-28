@@ -10,8 +10,12 @@
       <table class = "table table-borderless">
        <tr>
         <td>投稿者名</td>
-        <td><%= f.text_field :name, readonly: true %></td>
+        <td><%= @post.user.name %></td>
        </tr>
+       <!--<tr>-->
+       <!-- <td>投稿者名</td>-->
+       <!-- <td>%= f.text_field :name, readonly: true %></td>-->
+       <!--</tr>-->
        <tr>
         <td>日付</td>
         <td><%= f.text_field :date, readonly: true %></td>
