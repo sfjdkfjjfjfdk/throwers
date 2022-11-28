@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  # validates :name, presence: true
+  validates :name, presence: true
   validates :date, presence: true
   validates :weather, presence: true
   validates :time, presence: true

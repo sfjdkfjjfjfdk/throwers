@@ -1,7 +1,11 @@
  <div class="row justify-content-around">
    <div class = "col-7">
     <%= form_with model: post do |f| %>
-      <table class = "table table-borderless">
+     <table class = "table table-borderless">
+       <tr>
+        <td>名前</td>
+        <td><%= f.text_field :name %></td>
+       </tr>
        <tr>
         <td>日付</td>
         <td><%= f.text_field :date %></td>
@@ -27,7 +31,7 @@
         <td><%= f.text_area :improvement, size: "50x5",placeholder: "できるだけ詳しく" %></td>
        </tr>
      </table>
-
+     
      <div class="text-center">
       <%= f.submit "投稿する", class:"btn btn-success" %>
      </div>
