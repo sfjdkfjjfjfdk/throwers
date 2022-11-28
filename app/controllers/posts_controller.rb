@@ -25,11 +25,15 @@ class PostsController < ApplicationController
   def show
      @post = Post.find(params[:id])
      @comment = Comment.new
-     @user = @post.user
   end
 
   def edit
      @post = Post.find(params[:id])
+     if @post.user == current_user
+        render "edit"
+     else
+       redirect_to books_path
+     end
   end
 
   def update
@@ -43,8 +47,12 @@ class PostsController < ApplicationController
 
   def destroy
      @post = Post.find(params[:id])
-     @post.destroy
-     redirect_to posts_path
+     if @post.user == current_user
+     　 @post.destroy
+       redirect_to posts_path
+     else
+       render :index
+     end
   end
 
   # 検索機能
@@ -54,10 +62,9 @@ class PostsController < ApplicationController
   end
 
   def myposts
-      @my_posts = Post.where(user_id: current_user.id).page(params[:page]).includes(:user).order("created_at DESC")
-      @my_post  = Post.page(params[:page]).order("created_at DESC")
+     @my_posts = Post.where(user_id: current_user.id).page(params[:page]).includes(:user).order("created_at DESC")
+     @my_post  = Post.page(params[:page]).order("created_at DESC")
   end
-
 
   private
 

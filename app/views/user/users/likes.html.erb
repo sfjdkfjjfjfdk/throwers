@@ -1,6 +1,6 @@
   <div class="row justify-content-around mb-3">
    <div class = "col-8" >
-    <h4>いいね一覧</h4>
+    <h4>いいねした練習メニュー一覧</h4>
    </div>
   </div>
 
@@ -30,7 +30,7 @@
           <td><%= post.date  %></td>
           <td><%= post.likes.count %> いいね</td>
           <td>コメント件数：<%= post.comments.count %></td>
-          <td><%= link_to "練習メニュー詳細", post_path(post.id) %></td>
+          <td><%= link_to "練習メニュー詳細ページ", post_path(post.id) %></td>
           <td><%= link_to "ユーザー詳細ページ", user_path(post.user.id) %></td>
          </tr>
         </tbody>

@@ -1,11 +1,11 @@
   <div class="row justify-content-around mb-3">
    <div class = "col-8" >
-    <h4>練習メニュー詳細</h4>
+    <h4>練習メニュー詳細ページ</h4>
    </div>
   </div>
 
    <div class="row justify-content-around">
-   <div class = "col-9">
+    <div class = "col-7">
      <table class = "table table-borderless">
       <%= form_with model: @post do |f| %>
        <tr>
@@ -26,55 +26,52 @@
        </tr>
        <tr>
         <td>練習メニュー</td>
-        <td><%= f.text_area :practice, size: "50x15", readonly: true %></td>
+        <td><%= f.text_area :practice, size: "50x10", readonly: true %></td>
        </tr>
        <tr>
         <td>本日の練習で良かったこと</td>
-        <td><%= f.text_area :skill, size: "50x5", readonly: true %></td>
+        <td><%= f.text_area :skill, size: "50x3", readonly: true %></td>
        </tr>
        <tr>
         <td>明日の練習で改善、意識すること</td>
-        <td><%= f.text_area :improvement, size: "50x5", readonly: true %></td>
-        <% if @post.user_id == current_user.id %>
-        <td><%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %></td>
-        <td><%= link_to "削除する", post_path(@post), class: "btn btn-danger" , method: :delete %></td>
-        <% end %>
-       </tr>
+        <td><%= f.text_area :improvement, size: "50x3", readonly: true %></td>
       <% end %>
      </table>
+     <div class = "text-center">
+       <% if @post.user_id == current_user.id %>
+        <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %>
+        <%= link_to "削除する", post_path(@post), class: "btn btn-danger" , method: :delete %>
+       <% end %>
+      </div>
     </div>
-   </div>
-   <div class="row justify-content-around">
-    <div class = "col-6">
-     <!--いいね-->
-    <% if @post.liked_by?(current_user) %>
-    <%= link_to post_likes_path(@post), method: :delete, class: "favorite_btn" do %>
-     ♥<%= @post.likes.count %> いいね
-    <% end %>
-    <% else %>
-     <%= link_to post_likes_path(@post), method: :post, class: "favorite_btn" do %>
+    <div class = "col-5" >
+    <!--いいね-->
+     <% if @post.liked_by?(current_user) %>
+      <%= link_to post_likes_path(@post), method: :delete, class: "favorite_btn" do %>
+      ♥<%= @post.likes.count %> いいね
+     <% end %>
+     <% else %>
+      <%= link_to post_likes_path(@post), method: :post, class: "favorite_btn" do %>
       ♡<%= @post.likes.count %> いいね
      <% end %>
     <% end %>
-
     <!--コメントフォーム-->
-    <%= form_with(model:[@post, @comment], local: true) do |f| %>
-     <%= f.text_area :comment,placeholder: "コメントをここに", size: "30x5" %>
-     <%= f.submit "送信する" %>
-    <% end %>
-
-    <!--コメント一覧部分-->
-    <p>コメント件数：<%= @post.comments.count %></p>
-    <% @post.comments.each do |comment| %>
-     <% if comment.user.profile_image.attached? %>
-       <%= image_tag comment.user.get_profile_image(50, 50) %>
+     <%= form_with(model:[@post, @comment], local: true) do |f| %>
+      <%= f.text_area :comment,placeholder: "コメントをここに", size: "30x5" %>
+      <%= f.submit "送信する" %>
      <% end %>
-     <%= comment.user.name %>
-     <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-     <%= comment.comment %>
-    <% if comment.user == current_user %>
-     <%= link_to "削除", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %><br>
-    <% end %>
-   <% end %>
+    <!--コメント一覧部分-->
+     <p>コメント件数：<%= @post.comments.count %></p>
+     <% @post.comments.each do |comment| %>
+      <% if comment.user.profile_image.attached? %>
+       <%= image_tag comment.user.get_profile_image(50, 50) %>
+      <% end %>
+       <%= comment.user.name %>
+       <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <% if comment.user == current_user %>
+       <%= link_to "削除する", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %><br>
+      <% end %>
+       <%= comment.comment %><br>
+     <% end %>
+    </div>
    </div>
-  </div>

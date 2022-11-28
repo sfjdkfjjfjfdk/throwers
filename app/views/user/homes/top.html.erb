@@ -1,11 +1,20 @@
-<div class = "container">
-     <div class = "row-12 ">
-         <div class = "text-align">
-             <h2 class="text-center">throwers</h2>
-                 <p class="text-center">日々の練習を記録したり、</p><br>
-                 <p class="text-center">他の人に練習メニューを共有したりするサイトです</p><br>
-                 <p class="text-center"><%= link_to "新規登録", new_user_registration_path %></p>
-                 <p class="text-center"><%= link_to "ログイン", new_user_session_path %></p>
-         </div>
-     </div>
+<div class="row justify-content-around mb-4">
+  <div class = "col-5 ml-5">
+     <h3>throwers</h3>
+  </div>
+</div>
+
+<div class="row justify-content-around">
+  <div class="col-5 ml-5 mb-3">
+     <p>日々の練習メニューを記録したり</p><br>
+     <p>他の人と練習メニューを共有したり、見ることができるサイトです</p>
+  </div>
+</div>
+
+<div class="row justify-content-around mb-3">
+     <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+</div>
+
+<div class="row justify-content-around mb-3">
+     <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
 </div>

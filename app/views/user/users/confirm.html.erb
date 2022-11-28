@@ -1,13 +1,20 @@
-<div class = "container">
-     <div class = "row-12 ">
-         <div class = "text-align">
-             <h4 class="text-center">退会確認画面</h4>
-                 <p class="text-center">退会をすると、今まで投稿した記録が全て消えてしまいます。</p><br>
-                 <p class="text-center">それでも本当に退会しましすか？</p><br>
-                 <p class="text-center">
-                     <%= link_to "退会する", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
-                     <%= link_to "退会しない", user_path(current_user.id), class: "btn btn-primary" %>
-                  </p>
-         </div>
-     </div>
+<div class="row justify-content-around mb-4">
+  <div class = "col-5 ml-5">
+     <h4>退会確認画面</h4>
+  </div>
+</div>
+
+<div class="row justify-content-around">
+  <div class="col-5 ml-5 mb-3">
+     <p>退会をすると、今まで投稿した記録が全て消えてしまいます。</p><br>
+     <p>それでも本当に退会しますか？</p>
+  </div>
+</div>
+
+<div class="row justify-content-around mb-3">
+     <%= link_to "退会する", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+</div>
+
+<div class="row justify-content-around mb-3">
+     <%= link_to "退会しない", user_path(current_user.id), class: "btn btn-primary" %>
 </div>

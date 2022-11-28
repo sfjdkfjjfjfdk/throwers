@@ -14,7 +14,7 @@
        <tr class="field">
          <td><%= f.label :パスワード %></td>
          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-         <td><%= f.submit "ログイン", class:"btn btn-success" %></td>
+         <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
        </tr>
        <% if devise_mapping.rememberable? %>
         <tr class="field">
