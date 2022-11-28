@@ -30,8 +30,8 @@
           <td><%= post.date  %></td>
           <td><%= post.likes.count %> いいね</td>
           <td>コメント件数：<%= post.comments.count %></td>
-          <td><%= link_to "練習メニュー詳細ページ", post_path(post.id) %></td>
-          <td><%= link_to "ユーザー詳細ページ", user_path(post.user.id) %></td>
+          <td><%= link_to "練習メニュー詳細", post_path(post.id) %></td>
+          <td><%= link_to "ユーザーページ", user_path(post.user.id) %></td>
          </tr>
         </tbody>
         <% end %>
