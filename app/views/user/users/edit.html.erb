@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td>目標を達成するための今の課題</td>
-            <td><%= f.text_field :task,  id:"user_inputtask" %></td>
+            <td><%= f.text_area :task,  id:"user_inputtask",size: "30x3",placeholder: "できるだけ詳しく" %></td>
             <td> <%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
           </tr>
         </table>
