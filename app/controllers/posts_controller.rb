@@ -19,7 +19,6 @@ class PostsController < ApplicationController
      @posts = Post.page(params[:page]).per(5).order("created_at DESC")
      @post = current_user
      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
-
   end
 
   def show
@@ -48,6 +47,7 @@ class PostsController < ApplicationController
   def destroy
      @post = Post.find(params[:id])
      @post.destroy
+     flash[:notice] = '投稿を削除しました。'
      redirect_to posts_path
   end
 
