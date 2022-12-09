@@ -36,18 +36,21 @@ class User::UsersController < ApplicationController
    @user = User.find(params[:id])
    likes = Like.where(user_id: @user.id).pluck(:post_id)
    @like_posts = Post.find(likes)
+   @user = User.find(params[:id])
  end
 
  # フォロー一覧
  def follows
    user = User.find(params[:id])
    @users = user.following_user
+   @user = User.find(params[:id])
  end
 
  # フォロワー一覧
  def followers
    user = User.find(params[:id])
    @users = user.follower_user
+   @user = User.find(params[:id])
  end
 
  # 検索機能
