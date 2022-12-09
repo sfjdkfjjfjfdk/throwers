@@ -24,7 +24,7 @@
            </tr>
            <tr>
             <!--フォロー数-->
-            <td>フォロー</td>
+            <td><%= @user.name %>がフォロー</td>
             <td><%= link_to @following_users.count, follows_user_path(@user)  %></td>
            </tr>
            <tr>

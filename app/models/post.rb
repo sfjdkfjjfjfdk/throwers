@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  # validates :name, presence: true
+  validates :name, presence: true
   validates :date, presence: true
   validates :weather, presence: true
   validates :time, presence: true
@@ -31,7 +31,7 @@ class Post < ApplicationRecord
   # 検索
   def self.search(search)
     if search
-      Post.where(['name LIKE(?) OR date LIKE(?)', "%#{search}%","%#{search}%"])
+      Post.where(['date LIKE(?)', "%#{search}%"])
     end
   end
 

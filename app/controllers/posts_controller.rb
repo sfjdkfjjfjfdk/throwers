@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
   def new
      @post = Post.new
-     @posts = current_user
   end
 
   def create
@@ -17,7 +16,6 @@ class PostsController < ApplicationController
 
   def index
      @posts = Post.page(params[:page]).per(5).order("created_at DESC")
-     @post = current_user
      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
@@ -31,7 +29,7 @@ class PostsController < ApplicationController
      if @post.user == current_user
         render "edit"
      else
-       redirect_to books_path
+       redirect_to posts_path
      end
   end
 
@@ -59,7 +57,6 @@ class PostsController < ApplicationController
 
   def myposts
      @my_posts = Post.where(user_id: current_user.id).page(params[:page]).includes(:user).order("created_at DESC")
-     @my_post  = Post.page(params[:page]).order("created_at DESC")
   end
 
   private
