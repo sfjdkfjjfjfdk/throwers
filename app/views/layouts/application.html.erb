@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -44,6 +43,12 @@
                 練習メニュー一覧
                 <% end %>
               </li>
+              <% elsif admin_signed_in? %>
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                ログアウト
+                <% end %>
+              </li>
               <% else %>
               <li>
                 <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
@@ -53,6 +58,11 @@
               <li>
                 <%= link_to  new_user_session_path, class: 'nav-link text-light' do %>
                 ログイン
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_session_path, class: 'nav-link text-light' do %>
+                管理者側ログイン
                 <% end %>
               </li>
               <% end %>
@@ -66,16 +76,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-
-    <!--<footer>-->
-    <!--  <div class="container mt-5">-->
-    <!--    <div class="row">-->
-    <!--      <div class="mx-auto">-->
-    <!--        <p>CopyRight Infratop.inc</p>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</footer>-->
 
   </body>
 </html>

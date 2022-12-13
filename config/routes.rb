@@ -44,9 +44,13 @@ Rails.application.routes.draw do
 
   # 管理者側
   # URL /admin/sign_in...
-   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+   devise_for :admin, skip: [:passwords] ,controllers: {
    sessions: "admin/sessions"
   }
+
+  namespace :admin do
+   resources :users, only: [:index, :show, :edit, :update, :destroy]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
