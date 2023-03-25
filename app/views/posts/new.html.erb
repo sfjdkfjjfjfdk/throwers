@@ -9,6 +9,10 @@
    <div class = "col-7">
     <%= form_with model: @post do |f| %>
      <table class = "table table-borderless">
+      <tr>
+        <td>名前</td>
+        <td><%= f.text_field :name %></td>
+       </tr>
        <tr>
         <td>日付</td>
         <td><%= f.text_field :date %></td>

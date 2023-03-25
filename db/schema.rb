@@ -69,13 +69,13 @@ ActiveRecord::Schema.define(version: 2022_11_15_033443) do
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.date "date", null: false
-    t.text "time", default: "", null: false
-    t.text "weather", default: "", null: false
-    t.text "practice", default: "", null: false
-    t.text "skill", default: "", null: false
-    t.text "improvement", default: "", null: false
+    t.text "time", null: false
+    t.text "weather", null: false
+    t.text "practice", null: false
+    t.text "skill", null: false
+    t.text "improvement", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
