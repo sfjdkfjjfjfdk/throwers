@@ -1,0 +1,36 @@
+<div class="row justify-content-around mb-3">
+   <div class = "col-7">
+     <h4><%= @user.name %>さんのユーザーページ</h4>
+  </div>
+ </div>
+
+
+ <!--%= render 'layouts/errors', obj: @user %>-->
+    <div class = "row justify-content-around" >
+      <div class = "col-8 mr-5" >
+        <table class = "table table-borderless" >
+          <tr>
+              <td>会員ID</td>
+              <td><%= @user.id %></td>
+          </tr>
+          <tr>
+             <td>プロフィール画像</td>
+             <td>
+               <% if @user.profile_image.attached? %>
+                 <%= image_tag @user.get_profile_image(50, 50) %>
+               <% end %>
+             </td>
+          </tr>
+          <tr>
+             <td>名前</td>
+             <td><%= @user.name %></td>
+          </tr>
+          <tr>
+             <td>専門種目</td>
+             <td><%= @user.event %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+ <!--% end %>-->
