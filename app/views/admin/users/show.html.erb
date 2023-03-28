@@ -4,7 +4,6 @@
   </div>
  </div>
 
-
  <!--%= render 'layouts/errors', obj: @user %>-->
     <div class = "row justify-content-around" >
       <div class = "col-8 mr-5" >
@@ -31,9 +30,8 @@
           </tr>
           <tr>
               <td><%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %></td>
+              <td><%= link_to "投稿一覧", admin_posts_path(@posts), class: "btn btn-success" %></td>
           </tr>
         </table>
       </div>
     </div>
-
- <!--% end %>-->

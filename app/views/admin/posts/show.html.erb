@@ -1,0 +1,42 @@
+ <div class="row justify-content-around mb-3">
+   <div class = "col-8" >
+    <h4>練習メニュー詳細</h4>
+   </div>
+  </div>
+
+   <div class="row justify-content-around">
+    <div class = "col-7">
+     <table class = "table table-borderless">
+       <tr>
+        <td>投稿者名</td>
+        <td><%= @post.user.name %></td>
+       </tr>
+       <tr>
+        <td>日付</td>
+        <td><%= @post.date %></td>
+       </tr>
+       <tr>
+        <td>天気</td>
+        <td><%= @post.weather %></td>
+       </tr>
+       <tr>
+        <td>練習時間</td>
+        <td><%= @post.time %></td>
+       </tr>
+       <tr>
+        <td>練習メニュー</td>
+        <td><%= @post.practice %></td>
+       </tr>
+       <tr>
+        <td>本日の練習で良かったこと</td>
+        <td><%= @post.skill %></td>
+       </tr>
+       <tr>
+        <td>明日の練習で改善、意識すること</td>
+        <td><%= @post.improvement %></td>
+     </table>
+     <div class = "text-center">
+        <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success" %>
+        <%= link_to "削除する", post_path(@post), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>       
+      </div>
+    </div>
