@@ -44,14 +44,20 @@
                 <% end %>
               </li>
               <% elsif admin_signed_in? %>
+               <li>
+                <%= link_to admin_users_path(@users), class: 'nav-link text-light' do %>
+                ユーザー一覧
+                <% end %>
+              </li>
+
               <li>
-                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-                ログアウト
+                <%= link_to admin_posts_path(@posts), class: 'nav-link text-light' do %>
+                投稿一覧
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_posts_path(@posts),  class: 'nav-link text-light' do %>
-                投稿一覧
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                ログアウト
                 <% end %>
               </li>
               <% else %>
