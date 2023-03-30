@@ -1,0 +1,43 @@
+  <div class="row justify-content-around mb-3">
+   <div class = "col-8" >
+    <h4>練習メニュー編集</h4>
+   </div>
+  </div>
+   <%= render 'layouts/errors', obj: @post %>
+
+  <div class="row justify-content-around">
+   <div class = "col-7">
+    <%= form_with model: @post do |f| %>
+     <table class = "table table-borderless">
+       <tr>
+        <td>日付</td>
+        <td><%= f.text_field :date %></td>
+       </tr>
+       <tr>
+        <td>天気</td>
+        <td><%= f.text_field :weather %></td>
+       </tr>
+       <tr>
+        <td>練習時間</td>
+        <td><%= f.text_field :time %></td>
+       </tr>
+       <tr>
+        <td>練習メニュー</td>
+        <td><%= f.text_area :practice, size: "50x10",placeholder: "できるだけ詳しく" %></td>
+       </tr>
+       <tr>
+        <td>本日の練習で良かったこと</td>
+        <td><%= f.text_area :skill, size: "50x5",placeholder: "できるだけ詳しく" %></td>
+       </tr>
+       <tr>
+        <td>明日の練習で改善、意識すること</td>
+        <td><%= f.text_area :improvement, size: "50x5",placeholder: "できるだけ詳しく" %></td>
+       </tr>
+     </table>
+
+     <div class="text-center">
+      <%= f.submit "投稿する", class:"btn btn-success" %>
+     </div>
+     <% end %>
+    </div>
+  </div>
