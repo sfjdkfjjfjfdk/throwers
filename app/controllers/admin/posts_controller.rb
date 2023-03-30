@@ -32,8 +32,10 @@ class Admin::PostsController < ApplicationController
   #   @my_posts = Post.where(user_id: current_user.id).page(params[:page]).includes(:user).order("created_at DESC")
   # end
 
+  private
+
   def post_params
-    params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement, :profile_image)
+     params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement, :profile_image)
   end
 
 end
