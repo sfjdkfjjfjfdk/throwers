@@ -21,6 +21,16 @@
             <td><%= f.text_field :event,  id:"user_inputevent" %></td>
           </tr>
           <tr>
+            <td>会員状態</td>
+            <td>
+             <%= f.radio_button :status, true %>
+             <%= f.label :有効 %>
+             <%= f.radio_button :status, false %>
+             <%= f.label :退会 %>
+           </td>
+          </tr>
+
+          <tr>
             <td> <%= f.submit "編集内容を保存", class: "btn btn-success" %></td>
           </tr>
         </table>
