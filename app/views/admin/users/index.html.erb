@@ -1,35 +1,41 @@
-<div class = "col-10">
+ <div class="row justify-content-around mb-3">
+  <div class = "col-8" >
    <h4>ユーザー一覧</h4>
-  <table class = "table table-border">
-        <thead>
-          <tr>
-           <th>ユーザーID</th>
-           <th></th>
-           <th>名前</th>
-           <th>専門種目</th>
-           <th></th>
-           <th></th>
-           <th></th>
-           <th></th>
-          </tr>
-        </thead>
-        <% @users.each do |user| %>
-        <tbody>
-         <tr>
-          <td><%= user.id %></td>
-          <td>
-           <% if user.profile_image.attached? %>
-            <%= image_tag user.get_profile_image(50, 50) %>
-           <% end %>
-          </td>
-          <td><%= user.name %></td>
-          <td><%= user.event %></td>
-          <td>フォロー<%= user.following_user.count %></td>
-          <td>フォロワー<%= user.follower_user.count %></td>
-          <td><%= link_to "ユーザーページ", admin_user_path(user) %></td>
-         </tr>
-        </tbody>
-        <% end %>
-       </tbody>
-      </table>
-</div>
+  </div>
+ </div>
+
+ <div class="row justify-content-around">
+  <div class = "col-10">
+   <table class = "table table-border">
+    <thead>
+     <tr>
+      <th>ユーザーID</th>
+      <th>プロフィール画像</th>
+      <th>名前</th>
+      <th>専門種目</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </tr>
+    </thead>
+     <% @users.each do |user| %>
+    <tbody>
+     <tr>
+      <td><%= user.id %></td>
+      <td>
+       <% if user.profile_image.attached? %>
+         <%= image_tag user.get_profile_image(50, 50) %>
+       <% end %>
+      </td>
+      <td><%= user.name %></td>
+      <td><%= user.event %></td>
+      <td>フォロー<%= user.following_user.count %></td>
+      <td>フォロワー<%= user.follower_user.count %></td>
+      <td><%= link_to "ユーザーページ", admin_user_path(user) %></td>
+     </tr>
+    </tbody>
+    <% end %>
+   </table>
+  </div>
+ </div>

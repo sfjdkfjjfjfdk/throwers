@@ -6,7 +6,7 @@
 
  <!--%= render 'layouts/errors', obj: @user %>-->
     <div class = "row justify-content-around" >
-      <div class = "col-8 mr-5" >
+      <div class = "col-6 mr-5" >
         <table class = "table table-borderless" >
           <tr>
               <td>会員ID</td>
@@ -30,11 +30,11 @@
           </tr>
           <tr>
              <td>会員状態</td>
-             <td><%= @user.status %></td>
+             <td></td>
           </tr>
-          <tr>
-              <td><%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %></td>
-        　</tr>
         </table>
+          <div class = "text-center">
+              <td><%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %></td>
+          </div>
       </div>
     </div>
