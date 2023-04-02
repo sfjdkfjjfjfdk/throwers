@@ -28,7 +28,7 @@ class User::UsersController < ApplicationController
  def destroy
    @user = User.find(params[:id])
    @user.destroy
-   flash[:notice] = 'ユーザーを削除しました。'
+   flash[:notice] = '退会処理が完了しました。'
    redirect_to :root #削除に成功すればrootページに戻る
  end
 
