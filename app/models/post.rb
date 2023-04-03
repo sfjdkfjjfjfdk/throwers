@@ -24,6 +24,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
+  # いいね
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
@@ -31,7 +32,7 @@ class Post < ApplicationRecord
   # 検索
   def self.search(search)
     if search
-      Post.where(['date LIKE(?)', "%#{search}%"])
+      Post.where(['name LIKE(?) OR date LIKE(?)', "%#{search}%","%#{search}%"])
     end
   end
 

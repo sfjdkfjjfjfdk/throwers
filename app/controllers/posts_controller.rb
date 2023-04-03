@@ -15,7 +15,8 @@ class PostsController < ApplicationController
   end
 
   def index
-     @posts = Post.page(params[:page]).per(5).order("created_at DESC")
+    # 後に投稿されたものが上に来るようにする→order("created_at DESC") 
+     @posts = Post.page(params[:page]).per(5).order("created_at DESC") 
      @my_posts = Post.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
   # 検索機能
   def search
      @posts = Post.search(params[:search])
-     @post = Post.page(params[:page]).order("created_at DESC")
+    # @post = Post.page(params[:page]).order("created_at DESC")
   end
 
   def myposts
@@ -64,6 +65,5 @@ class PostsController < ApplicationController
   def post_params
      params.require(:post).permit(:name, :date, :weather, :time, :practice, :skill, :improvement, :profile_image)
   end
-
 
 end

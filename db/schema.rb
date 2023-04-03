@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_15_033443) do
+ActiveRecord::Schema.define(version: 2023_04_03_111805) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2022_11_15_033443) do
     t.text "event"
     t.text "target"
     t.text "task"
-    t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
