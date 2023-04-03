@@ -11,14 +11,17 @@
      <div class = "col-4">
        <h4>ユーザページ</h4>
          <% if @user.profile_image.attached? %>
+          <!--accept: "image/*"  →画像ファイルしか投稿できないようにする-->
           <%= image_tag @user.get_profile_image(100, 100) %>
+         <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
         <% end %>
-         <table class = "table table-borderless">
-           <tr>
-             <td>名前</td>
-             <td><%= @user.name %></td>
-             </tr>
-           <tr>
+        <table class = "table table-borderless">
+          <tr>
+            <td>名前</td>
+            <td><%= @user.name %></td>
+            </tr>
+          <tr>
              <td>専門種目</td>
              <td><%= @user.event %></td>
            </tr>
@@ -39,7 +42,6 @@
             <% end %>
            </tr>
          </table>
-
         <!--ログインユーザーでない場合にフォローボタン表示-->
         <div class="text-center">
          <% if current_user != @user %>
@@ -60,5 +62,4 @@
        <h4>ユーザー一覧</h4>
        <%= render 'user', users: @users %>
       </div>
-     </div>
   </div>

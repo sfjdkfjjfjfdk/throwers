@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+ devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
  validates :name, presence: true
@@ -10,7 +10,7 @@ class User < ApplicationRecord
  has_one_attached :profile_image
 
  def get_profile_image(width, height)
-      profile_image.variant(resize_to_limit: [width, height]).processed
+     profile_image.variant(resize_to_limit: [width, height]).processed
  end
 
  has_many :posts, dependent: :destroy
@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
  # ユーザーをフォローする
  def follow(user_id)
-    follower.create(followed_id: user_id)
+     follower.create(followed_id: user_id)
  end
 
  # ユーザーのフォローを外す

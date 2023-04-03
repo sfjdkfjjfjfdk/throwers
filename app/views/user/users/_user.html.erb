@@ -15,6 +15,8 @@
           <td>
            <% if user.profile_image.attached? %>
             <%= image_tag user.get_profile_image(50, 50) %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
            <% end %>
           </td>
           <td><%= user.name %></td>
@@ -25,5 +27,4 @@
          </tr>
         </tbody>
         <% end %>
-       </tbody>
       </table>
