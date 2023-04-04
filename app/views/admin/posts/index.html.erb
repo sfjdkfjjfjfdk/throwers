@@ -24,6 +24,8 @@
           <td>
            <% if post.user.profile_image.attached? %>
             <%= image_tag post.user.get_profile_image(50, 50) %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
            <% end %>
           </td>
           <td><%= post.user.name %></td>
