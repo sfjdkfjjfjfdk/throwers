@@ -11,9 +11,8 @@ class Post < ApplicationRecord
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
-      profile_image.variant(resize_to_limit: [width, height]).processed
+     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
 
   belongs_to :user
 
@@ -26,14 +25,14 @@ class Post < ApplicationRecord
 
   # いいね
   def liked_by?(user)
-    likes.exists?(user_id: user.id)
+     likes.exists?(user_id: user.id)
   end
 
   # 検索
   def self.search(search)
-    if search
-      Post.where(['name LIKE(?) OR date LIKE(?)', "%#{search}%","%#{search}%"])
-    end
+   if search
+     Post.where(['name LIKE(?) OR date LIKE(?)', "%#{search}%","%#{search}%"])
+   end
   end
 
 end

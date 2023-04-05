@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # ユーザー
   scope module: "user" do
      resources :users, only: [:show, :edit, :update, :destroy] do
+      # idを含ませるため、member
       member do
        # フォロー、フォロワー
        get :follows, :followers
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
 
   # 投稿
    resources :posts do
+    # idを含ませないため、collection
     collection do
      # 投稿検索
      get :search
