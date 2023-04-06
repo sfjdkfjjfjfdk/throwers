@@ -1,10 +1,10 @@
   <div class="row justify-content-around mb-3">
-   <div class = "col-5 ml-5" >
+   <div class = "col-4 ml-5" >
      <h4>練習メニュー一覧</h4>
    </div>
-   <div class = "col-5">
+   <div class = "col-6">
      <%= form_tag(search_posts_path,:method => 'get') do %>
-       <%= label_tag '日付(○○○○-○○-○○)で検索' %>
+       <%= label_tag '投稿者名または、日付(○○○○-○○-○○)で検索' %>
        <%= text_field_tag :search %>
        <%= submit_tag '検索', :address => nil %>
     <% end %>
