@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
  root to: "user/homes#top"
 
   #会員側

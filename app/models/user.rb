@@ -53,11 +53,17 @@ class User < ApplicationRecord
      following_user.include?(user)
  end
 
-  # 検索
-  def self.search(search)
-    if search
+ # DM機能
+ # 2人のユーザーが複数のメッセージ(message)を送る多対多の関係、
+ has_many :messages, dependent: :destroy
+ # UsersテーブルとRoomsテーブルは多対多の関係にあり、中間テーブルとしてEntriesテーブルを置く
+ has_many :entries, dependent: :destroy
+
+ # 検索
+ def self.search(search)
+   if search
       User.where(['name LIKE(?) OR event LIKE(?)', "%#{search}%","%#{search}%"])
-    end
-  end
+   end
+ end
 
 end
