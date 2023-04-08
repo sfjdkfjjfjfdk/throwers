@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # ユーザー
   scope module: "user" do
      resources :users, only: [:show, :edit, :update, :destroy] do
+     resources :messages, only: [:create]
+     resources :rooms, only: [:create,:show]
       # idを含ませるため、member
       member do
        # フォロー、フォロワー
