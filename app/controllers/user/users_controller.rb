@@ -3,8 +3,34 @@ class User::UsersController < ApplicationController
  def show
    @user = User.find(params[:id])
    @users = User.all
+   # フォロー、フォロワー機能
    @following_users = @user.following_user
    @follower_users = @user.follower_user
+   # DM機能
+   @currentUserEntry=Entry.where(user_id: current_user.id)
+   @userEntry=Entry.where(user_id: @user.id)
+    # 現在ログインしているユーザーではない
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          # roomsが作成されている場合と作成されていない場合に条件分岐
+          # @currentUserEntryと@userEntryをeachで一つずつ取り出す
+          # それぞれEntriesテーブル内にあるroom_idが共通しているのユーザー同士に対して@roomId = cu.room_idという変数を指定
+          # すでに作成されているroom_idを特定できる
+          if cu.room_id == u.room_id then
+           # @isRoom=trueと記述→これがfalseの時、つまりはRoomを作成するときの条件を記述する
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      # unless @isRoom内では、新しくインスタンスを生成するために、.newと記載
+      if @isRoom
+      else
+      　 @room = Room.new
+      　 @entry = Entry.new
+      end
+    end
  end
 
  def edit
