@@ -9,8 +9,9 @@ class User::UsersController < ApplicationController
    # DM機能
    @currentUserEntry=Entry.where(user_id: current_user.id)
    @userEntry=Entry.where(user_id: @user.id)
-    # 現在ログインしているユーザーではない
-    unless @user.id == current_user.id
+    if @user.id == current_user.id
+     @msg ="他のユーザーとDMしてみよう！"
+    else
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
           # roomsが作成されている場合と作成されていない場合に条件分岐
@@ -25,7 +26,7 @@ class User::UsersController < ApplicationController
         end
       end
       # unless @isRoom内では、新しくインスタンスを生成するために、.newと記載
-      if @isRoom
+      if @isRoom!= true
       else
       　 @room = Room.new
       　 @entry = Entry.new
