@@ -46,28 +46,27 @@
         <div class="text-center">
          <% if current_user != @user %>
           <% if current_user.following?(@user) %>
-           <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
+           <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
           <% else %>
-           <%= link_to 'フォローする', user_relationships_path(@user.id), method: :post, class:"btn btn-success" %>
+           <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"btn btn-success" %>
+          <% end %>
+         <% end %>
+        <!--DM機能<-->
+         <% if @user.id == current_user.id %>
+          <%= @msg %>
+         <% else %>
+          <% if @isRoom == true %>
+           <p><%= link_to "DMをする", user_rooms_path(@roomId) %></p>
+           <% else %>
+            <%= form_for @room, url: user_rooms_path(@user) do |f| %>
+             <%= fields_for @entry do |e|%>
+              <% e.hidden_field :user_id, value: @user.id %>
+             <% end %>
+            <%= f.submit "DMを開始する" %>
+            <% end %>
           <% end %>
          <% end %>
         </div>
-
-        <!--DM機能<-->
-         <!--% if @user.id == current_user.id %>-->
-         <!-- %= @msg %>-->
-         <!--% else %>-->
-         <!--% if @isRoom == true %>-->
-         <!--  <p>%= link_to 'DMへ', room_show_path(@roomId) %></p>-->
-         <!--  else %>-->
-         <!--  %= form_for @room do |f| %>-->
-         <!--   %= fields_for @entry do |e|%>-->
-         <!--       % e.hidden_field :user_id, value: @user.id %>-->
-         <!--   % end %>-->
-         <!--  %= f.submit "DMを開始する"%>-->
-         <!--  % end %>-->
-         <!-- % end %>-->
-         <!--% end %>-->
 
         <%= link_to "いいねした投稿一覧", likes_user_path(@user) %><br>
        <% if user_signed_in? && @user == current_user %>

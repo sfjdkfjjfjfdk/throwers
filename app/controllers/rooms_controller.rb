@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
     # フォローされている側の情報をEntriesテーブルに保存する
     # 保存したparamsの情報(:user_id, :room_id)を許可し、現在ログインしているユーザーと同じく@roomにひもづくidを保存する
     @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
-    redirect_to "/rooms/#{@room.id}"
+    # redirect_to "/rooms/#{@room.id}"
   end
 
   def show
@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
       @entries = @room.entries
     else
       # 条件がfalseだったら、前のページに戻る
-      redirect_back(fallback_location: root_path)
+      # redirect_back(fallback_location: root_path)
     end
   end
 

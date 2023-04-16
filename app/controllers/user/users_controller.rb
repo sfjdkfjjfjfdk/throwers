@@ -10,7 +10,7 @@ class User::UsersController < ApplicationController
    @currentUserEntry=Entry.where(user_id: current_user.id)
    @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
-     @msg ="他のユーザーとDMしてみよう！"
+      # @msg ="他のユーザーとDMしてみよう！"
     else
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
@@ -26,10 +26,9 @@ class User::UsersController < ApplicationController
         end
       end
       # unless @isRoom内では、新しくインスタンスを生成するために、.newと記載
-      if @isRoom!= true
-      else
-      　 @room = Room.new
-      　 @entry = Entry.new
+      unless @isRoom
+        @room = Room.new
+        @entry = Entry.new
       end
     end
  end
@@ -37,7 +36,7 @@ class User::UsersController < ApplicationController
  def edit
    @user = User.find(params[:id])
    if @user == current_user
-     render "edit"
+     render :edit
    else
      redirect_to user_path
    end
