@@ -1,15 +1,15 @@
 class RoomsController < ApplicationController
-  
-  before_action :authenticate_user!
+
+  # before_action :authenticate_user!
 
   def create
     @room = Room.create
     # 現在ログインしているユーザー
-    @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)
+    Entry.create(room_id: @room.id, user_id: current_user.id)
+    Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
     # フォローされている側の情報をEntriesテーブルに保存する
     # 保存したparamsの情報(:user_id, :room_id)を許可し、現在ログインしているユーザーと同じく@roomにひもづくidを保存する
-    @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
-    # redirect_to "/rooms/#{@room.id}"
+     redirect_to "/rooms/#{@room.id}"
   end
 
   def show
