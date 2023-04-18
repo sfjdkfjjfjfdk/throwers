@@ -2,7 +2,7 @@
 <div class="dmMain">
     <% @messages.each do |m| %>
         <strong><%= m.body %></strong>
-        <small><%= m.user %>さん</small><hr>
+        
     <% end %>
 
     <%= form_for @message do |f| %>
