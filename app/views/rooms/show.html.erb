@@ -1,14 +1,55 @@
-<h4>ダイレクトメッセージページ</h4>
-<div class="dmMain">
-    <% @messages.each do |m| %>
-        <strong><%= m.body %></strong>
-        
-    <% end %>
+ <div class="row justify-content-around mb-3">
+  <div class = "col-8" >
+　　<h4>ダイレクトメッセージページ</h4>
+  </div>
+ </div>
 
+ <div class="row justify-content-around">
+  <div class = "col-8">
+   <table class = "table table-borderless">
+　　<thead>
+    　<tr>
+       <th>ユーザー名</th>
+    　</tr>
+　　</thead>
+    <% @entries.each do |e| %>
+    <tbody>
+     <tr>
+      <td><%= e.user.name %></td>
+     </tr>
+    </tbody>
+    <% end %>
+   </table>
+  </div>
+ </div>
+ <div class="row justify-content-around">
+  <div class = "col-8">
+   <table class = "table table-borderless">
+　　<thead>
+    　<tr>
+       <th>メッセージ</th>
+    　</tr>
+　　</thead>
+     <% @messages.each do |m| %>
+    <tbody>
+     <tr>
+      <td><%= m.body %></td>
+     </tr>
+    </tbody>
+    <% end %>
+   </table>
+  </div>
+ </div>
+
+ <div class="row justify-content-around">
+  <div class = "col-8">
     <%= form_for @message do |f| %>
     <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
     <%= f.hidden_field :room_id, :value => @room.id %>
     <br>
-    <%= f.submit "送信する" %>
+    <%= f.submit "送信する", class: "btn btn-success" %>
     <% end %>
-</div>
+  </div>
+ </div>
+
+<!----送信した人がわからないから、User名がわかるようにする>
