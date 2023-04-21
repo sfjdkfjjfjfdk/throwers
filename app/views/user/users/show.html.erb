@@ -56,13 +56,13 @@
           <%= @msg %>
          <% else %>
           <% if @isRoom == true %>
-           <p><%= link_to "DMをする", room_path(@roomId) %></p>
+           <p><%= link_to "DMをする", room_path(@roomId), class: "btn btn-primary" %></p>
            <% else %>
             <%= form_for @room, url: rooms_path(@user.id) do |f| %>
              <%= fields_for @entry do |e|%>
               <% e.hidden_field :user_id, value: @user.id %>
              <% end %>
-            <%= f.submit "DMを開始する" %>
+            <%= f.submit "DMを開始する", class: "btn btn-primary" %>
             <% end %>
           <% end %>
          <% end %>
