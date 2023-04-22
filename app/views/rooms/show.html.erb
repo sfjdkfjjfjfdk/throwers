@@ -22,6 +22,7 @@
    </table>
   </div>
  </div>
+ 
  <div class="row justify-content-around">
   <div class = "col-8">
    <table class = "table table-borderless">
@@ -30,12 +31,17 @@
        <th>メッセージ</th>
     　</tr>
 　　</thead>
+     <% @entries.each do |e| %>
      <% @messages.each do |m| %>
-    <tbody>
+     <tbody>
+      <tr>
+      <td>ユーザー名:<%= e.user.name %></td>
+     </tr>
      <tr>
-      <td><%= m.body %></td>
+      <td>メッセージ:<%= m.body %></td>
      </tr>
     </tbody>
+    <% end %>
     <% end %>
    </table>
   </div>
@@ -51,5 +57,3 @@
     <% end %>
   </div>
  </div>
-
-<!----送信した人がわからないから、User名がわかるようにする>
