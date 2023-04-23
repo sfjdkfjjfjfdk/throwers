@@ -16,7 +16,7 @@ end
  private
 
  def message_params
-    params.require(:message).permit(:user_id, :body, :room_id).merge(user_id: current_user.id)
+    params.require(:message).permit(:user_id, :name, :body, :room_id).merge(user_id: current_user.id)
  end
 
 end

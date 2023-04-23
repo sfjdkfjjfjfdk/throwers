@@ -9,7 +9,7 @@
    <table class = "table table-borderless">
 　　<thead>
     　<tr>
-       <th>ユーザー名</th>
+       <th>参加者</th>
     　</tr>
 　　</thead>
     <% @entries.each do |e| %>
@@ -22,7 +22,7 @@
    </table>
   </div>
  </div>
- 
+
  <div class="row justify-content-around">
   <div class = "col-8">
    <table class = "table table-borderless">
@@ -34,7 +34,9 @@
      <% @messages.each do |m| %>
      <tbody>
      <tr>
-      <td><%= m.body %></td>
+      <td><%= m.user.name %>
+          <%= m.body %>
+      </td>
      </tr>
     </tbody>
     <% end %>
