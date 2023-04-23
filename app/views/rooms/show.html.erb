@@ -31,17 +31,12 @@
        <th>メッセージ</th>
     　</tr>
 　　</thead>
-     <% @entries.each do |e| %>
      <% @messages.each do |m| %>
      <tbody>
-      <tr>
-      <td>ユーザー名:<%= e.user.name %></td>
-     </tr>
      <tr>
-      <td>メッセージ:<%= m.body %></td>
+      <td><%= m.body %></td>
      </tr>
     </tbody>
-    <% end %>
     <% end %>
    </table>
   </div>
