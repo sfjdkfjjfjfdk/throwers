@@ -28,4 +28,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  def edit
+    @room = Room.find(params[:id])
+    @rooms = @message
+    @message = Message.find(params[:id])
+     if @message.user_id == current_user.id
+         render :edit
+     end
+  end
+
 end

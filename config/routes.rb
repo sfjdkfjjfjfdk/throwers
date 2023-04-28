@@ -29,8 +29,8 @@ Rails.application.routes.draw do
     end
     
    # DM機能
-   resources :rooms, only: [:create,:show]
-   resources :messages, only: [:create]
+   resources :rooms, only: [:create,:show, :edit]
+   resources :messages, only: [:create, :edit]
    
   # 投稿
    resources :posts do
