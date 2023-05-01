@@ -27,11 +27,11 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
      end
     end
-    
+
    # DM機能
-   resources :rooms, only: [:create,:show, :edit]
-   resources :messages, only: [:create, :edit]
-   
+   resources :rooms, only: [:create,:show]
+   resources :messages, only: [:create]
+
   # 投稿
    resources :posts do
     # idを含ませないため、collection

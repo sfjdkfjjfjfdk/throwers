@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
     Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
     # フォローされている側の情報をEntriesテーブルに保存する
     # 保存したparamsの情報(:user_id, :room_id)を許可し、現在ログインしているユーザーと同じく@roomにひもづくidを保存する
-     redirect_to "/rooms/#{@room.id}"
+    redirect_to "/rooms/#{@room.id}"
   end
 
   def show
@@ -33,7 +33,9 @@ class RoomsController < ApplicationController
     @rooms = @message
     @message = Message.find(params[:id])
      if @message.user_id == current_user.id
-         render :edit
+       redirect_to "/rooms/#{@room.id}"
+     else
+       render :edit
      end
   end
 
