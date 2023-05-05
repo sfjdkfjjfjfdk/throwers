@@ -44,7 +44,7 @@
     </div>
     <div class = "col-5" >
     <!--いいね-->
-     <div id = "likes_buttons_<@post.id>" >
+     <div id = "like_buttons_<%= @post.id %>">
        <%= render 'likes', post: @post %>
      </div>
     <!--コメントフォーム-->
