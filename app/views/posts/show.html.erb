@@ -44,7 +44,9 @@
     </div>
     <div class = "col-5" >
     <!--いいね-->
-     <%= render 'likes', post: @posts %>
+     <div id = "likes_buttons_<@post.id>" >
+       <%= render 'likes', post: @post %>
+     </div>
     <!--コメントフォーム-->
      <%= form_with(model:[@post, @comment], local: true) do |f| %>
       <%= f.text_area :comment,placeholder: "コメントをここに", size: "30x5" %>
