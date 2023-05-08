@@ -44,11 +44,11 @@
     </div>
     <div class = "col-5" >
     <!--いいね-->
-     <div id = "like_buttons_<%= @post.id %>">
-       <%= render 'likes', post: @post %>
+     <div id = "like_btn_<%= @post.id %>">
+       <%= render 'posts/likes', post: @post %>
      </div>
     <!--コメントフォーム-->
-     <%= form_with(model:[@post, @comment], local: true) do |f| %>
+     <%= form_with(model:[@post, @comment], local: false) do |f| %>
       <%= f.text_area :comment,placeholder: "コメントをここに", size: "30x5" %>
       <%= f.submit "送信する" %>
      <% end %>
