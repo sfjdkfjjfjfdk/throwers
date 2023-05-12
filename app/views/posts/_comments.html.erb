@@ -1,0 +1,14 @@
+    <!--コメント一覧部分-->
+     <!--<p>コメント件数：%= post.comments.count %></p>-->
+     <% post.comments.each do |comment| %>
+      <% if comment.user.profile_image.attached? %>
+       <%= image_tag comment.user.get_profile_image(50, 50) %>
+      <% end %>
+       <%= comment.user.name %>
+       <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <% if comment.user == current_user %>
+      <!--remote:true, data: {"turbolinks" => false}はコメント機能の非同期-->
+       <%= link_to "削除する", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, remote:true, data: {"turbolinks" => false}, "data-confirm" => "本当に削除しますか？"  %><br>
+      <% end %>
+       <%= comment.comment %><br>
+     <% end %>

@@ -43,27 +43,17 @@
      </div>
     </div>
     <div class = "col-5" >
-    <!--いいね-->
+    <!--いいねの非同期-->
      <div id = "like_btn_<%= @post.id %>">
        <%= render 'posts/likes', post: @post %>
      </div>
     <!--コメントフォーム-->
-     <%= form_with(model:[@post, @comment], local: false) do |f| %>
-      <%= f.text_area :comment,placeholder: "コメントをここに", size: "30x5" %>
-      <%= f.submit "送信する" %>
-     <% end %>
-    <!--コメント一覧部分-->
-     <p>コメント件数：<%= @post.comments.count %></p>
-     <% @post.comments.each do |comment| %>
-      <% if comment.user.profile_image.attached? %>
-       <%= image_tag comment.user.get_profile_image(50, 50) %>
-      <% end %>
-       <%= comment.user.name %>
-       <%= comment.created_at.strftime('%Y/%m/%d') %>
-      <% if comment.user == current_user %>
-       <%= link_to "削除する", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"  %><br>
-      <% end %>
-       <%= comment.comment %><br>
-     <% end %>
+     <div id = "comment-form">
+      <%= render 'posts/form', { post: @post, comment: @comment } %>
+     </div>
+     <div id = "comment-form">
+      <%= render 'posts/comments', { post: @post, comment: @comment }  %>
+     </div>
+
     </div>
    </div>
