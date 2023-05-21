@@ -4,6 +4,6 @@
  <% end %>
 <% else %>
  <%= link_to post_likes_path(post), method: :post, remote: true, class: "like_btn" do %>
-   ♡<%= post.likes.count %> いいね
+  ♡<%= post.likes.count %> いいね
  <% end %>
 <% end %>
