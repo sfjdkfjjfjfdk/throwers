@@ -1,2 +1,2 @@
 <!--$()の部分のHTMLだけ右の()に更新する-->
-$('#like_btn_<%= @post.id %>').html("<%= j(render 'posts/likes', post: @post) %>")
+$('#like_btn_<%= @post.id %>').html("<%= j(render: 'posts/likes', post: @post) %>")

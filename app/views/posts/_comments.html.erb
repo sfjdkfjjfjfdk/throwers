@@ -8,7 +8,7 @@
        <%= comment.created_at.strftime('%Y/%m/%d') %>
       <% if comment.user == current_user %>
       <!--remote:true, data: {"turbolinks" => false}はコメント機能の非同期-->
-       <%= link_to "削除する", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, remote:true, "data-confirm" => "本当に削除しますか？"  %><br>
+       <%= link_to "削除する", post_comment_path(comment.post, comment), class: "btn btn-danger", method: :delete, remote: true, "data-confirm" => "本当に削除しますか？"  %><br>
       <% end %>
        <%= comment.comment %><br>
      <% end %>
