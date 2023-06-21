@@ -44,9 +44,9 @@
     </div>
     <div class = "col-5" >
     <!--いいねの非同期-->
-     <div id = "like_btn_<%= @post.id %>">
+     <span id = "like_<%= @post.id %>">
        <%= render 'posts/likes', post: @post %>
-     </div>
+     </span>
     <!--コメントフォーム-->
      <div id = "comment-form">
       <%= render 'posts/form', { post: @post, comment: @comment } %>
